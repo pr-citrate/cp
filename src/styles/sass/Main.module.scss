@@ -1,0 +1,23 @@
+.container {
+  width: 1200px;
+  height: 630px;
+  background-color: skyblue;
+  display: flex;
+  flex-direction: row;
+}
+
+%side {
+  width: 285px;
+}
+
+.header {
+  @extend %side;
+}
+
+.main {
+  width: 630px;
+}
+
+.footer {
+  @extend %side;
+}

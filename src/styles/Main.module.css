@@ -1,0 +1,15 @@
+.container {
+  width: 1200px;
+  height: 630px;
+  background-color: skyblue;
+  display: flex;
+  flex-direction: row;
+}
+
+.footer, .header {
+  width: 285px;
+}
+
+.main {
+  width: 630px;
+}

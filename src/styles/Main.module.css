@@ -1,9 +1,9 @@
 .container {
   width: 1200px;
   height: 630px;
-  background-color: skyblue;
   display: flex;
   flex-direction: row;
+  background-color: skyblue;
 }
 
 .footer, .header {
@@ -12,4 +12,6 @@
 
 .main {
   width: 630px;
+  position: relative;
+  background-color: blue;
 }

@@ -1,9 +1,10 @@
 .container {
   width: 1200px;
   height: 630px;
-  background-color: skyblue;
   display: flex;
   flex-direction: row;
+  // test
+  background-color: skyblue;
 }
 
 %side {
@@ -16,6 +17,9 @@
 
 .main {
   width: 630px;
+  position: relative;
+  // test
+  background-color: blue;
 }
 
 .footer {

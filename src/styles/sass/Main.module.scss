@@ -1,6 +1,8 @@
+@import './../../constants/constants.scss';
+
 .container {
-  width: 1200px;
-  height: 630px;
+  width: $img-width;
+  height: $img-height;
   display: flex;
   flex-direction: row;
   // test
@@ -8,7 +10,7 @@
 }
 
 %side {
-  width: 285px;
+  width: ($img-width - $img-height) / 2;
 }
 
 .header {
@@ -16,7 +18,7 @@
 }
 
 .main {
-  width: 630px;
+  width: $img-height;
   position: relative;
   // test
   background-color: blue;

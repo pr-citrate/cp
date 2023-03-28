@@ -5,23 +5,7 @@ import c from './../constants/constants';
 
 // todo: remove magic number and add comment
 
-function getXPos(order, total) {
-  const angle = (order / total) * 2 * Math.PI;
-  let pos = c.imgHeight / 2;
-  // prettier-ignore
-  pos = pos - Math.sin(angle) * (c.imgHeight / 2 - (c.imgPadding + c.characterHeight / 2));
-  pos = pos - c.characterHeight / 2;
-  return pos;
-}
 
-function getYPos(order, total) {
-  const angle = (order / total) * 2 * Math.PI;
-  let pos = c.imgHeight / 2;
-  // prettier-ignore
-  pos = pos - Math.cos(angle) * (c.imgHeight / 2 - (c.imgPadding + c.characterHeight / 2));
-  pos = pos - c.characterHeight / 2;
-  return pos;
-}
 
 function Main({ characters, setCharacters }) {
   return (
@@ -31,11 +15,10 @@ function Main({ characters, setCharacters }) {
         {characters.map((character, index) => (
           <Character
             key={character.id}
-            xPos={getXPos(index, characters.length)}
-            yPos={getYPos(index, characters.length)}
-          >
-            {character.name}
-          </Character>
+            id={character.id}
+            characters={characters}
+            order={index}
+          ></Character>
         ))}
       </div>
       <div className={styles.footer}>footer</div>

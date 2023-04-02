@@ -4,6 +4,8 @@ const c = {
   imgPadding: 30,
   characterWidth: 50,
   characterHeight: 50,
+  pointSize: 5,
+  pointPosition: 10,
 };
 
 export default c;

@@ -1,5 +1,4 @@
 import Main from '../components/main';
-import Arrows from '../components/Arrows';
 import AddForm from '../components/AddForm';
 import uuid from 'react-uuid';
 import { useState } from 'react';
@@ -19,9 +18,8 @@ function Test() {
 
   return (
     <div>
-      <AddForm />
       <Main characters={characters} setCharacters={setCharacters} />
-      <Arrows />
+      <AddForm characters={characters} setCharacters={setCharacters} />
     </div>
   );
 }

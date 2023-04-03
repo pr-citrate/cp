@@ -14,6 +14,7 @@ function Arrows({ characters, setCharacters }) {
     // clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }, [characters]);
+
   return (
     <canvas
       ref={canvasRef}

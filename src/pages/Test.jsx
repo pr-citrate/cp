@@ -3,53 +3,23 @@ import AddForm from '../components/AddForm';
 import uuid from 'react-uuid';
 import { useState, useEffect } from 'react';
 import c from './../constants/constants';
+import setPosition from '../utils/setPosition';
 
 function Test() {
-  const [characters, setCharacters] = useState([
-    { id: uuid(), name: '해량' },
-    { id: uuid(), name: '수혁' },
-    { id: uuid(), name: '무현' },
-    { id: uuid(), name: '지혁' },
-    { id: uuid(), name: '애영' },
-    { id: uuid(), name: '재희' },
-    { id: uuid(), name: '수정' },
-    { id: uuid(), name: '지현' },
-    { id: uuid(), name: '상현' },
-  ]);
+  const [characters, setCharacters] = useState(
+    setPosition([
+      { id: uuid(), name: 'c1' },
+      { id: uuid(), name: 'c2' },
+      { id: uuid(), name: 'c3' },
+      { id: uuid(), name: 'c4' },
+      { id: uuid(), name: 'c5' },
+      { id: uuid(), name: 'c6' },
+      { id: uuid(), name: 'c7' },
+      { id: uuid(), name: 'c8' },
+      { id: uuid(), name: 'c9' },
+    ])
+  );
 
-  const setPosition = () => {
-    function getXPos(order, total) {
-      const angle = (order / total) * 2 * Math.PI;
-      let pos = c.imgHeight / 2;
-      pos =
-        pos -
-        Math.sin(angle) *
-          (c.imgHeight / 2 - (c.imgPadding + c.characterHeight / 2));
-      pos = pos - c.characterHeight / 2;
-      return pos;
-    }
-
-    function getYPos(order, total) {
-      const angle = (order / total) * 2 * Math.PI;
-      let pos = c.imgHeight / 2;
-      pos =
-        pos -
-        Math.cos(angle) *
-          (c.imgHeight / 2 - (c.imgPadding + c.characterHeight / 2));
-      pos = pos - c.characterHeight / 2;
-      return pos;
-    }
-
-    setCharacters(
-      characters.map((obj, index) => ({
-        ...obj,
-        xPos: getXPos(index, characters.length),
-        yPos: getYPos(index, characters.length),
-      }))
-    );
-  };
-
-  useEffect(setPosition, []);
   return (
     <div>
       <Main characters={characters} setCharacters={setCharacters} />
@@ -57,5 +27,4 @@ function Test() {
     </div>
   );
 }
-
 export default Test;

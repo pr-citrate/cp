@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import uuid from 'react-uuid';
+import setPosition from '../utils/setPosition';
 
 function AddForm({ characters, setCharacters }) {
   const [inputValue, setInputValue] = useState('');
 
   const handleAddOnClick = () => {
     if (inputValue.trim() !== '') {
-      setCharacters((prevChars) => [
-        ...prevChars,
-        { name: inputValue.trim(), id: uuid() },
-      ]);
+      setCharacters((prevChars) => {
+        const newChars = [
+          ...prevChars,
+          { name: inputValue.trim(), id: uuid() },
+        ];
+        return setPosition(newChars);
+      });
       setInputValue('');
-      console.log(characters);
     }
   };
 

@@ -15,10 +15,10 @@ function Main({ characters, setCharacters }) {
               characters={characters}
             />
           ))}
+          <Arrows characters={characters} />
         </div>
         <div className={styles.footer}>footer</div>
       </div>
-      <Arrows characters={characters} />
     </div>
   );
 }

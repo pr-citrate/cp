@@ -19,9 +19,16 @@ function Test() {
     ])
   );
 
+  const [relations, setRelations] = useState([]);
+
   return (
     <div>
-      <Main characters={characters} setCharacters={setCharacters} />
+      <Main
+        characters={characters}
+        setCharacters={setCharacters}
+        relations={relations}
+        setRelations={setRelations}
+      />
       <AddForm setCharacters={setCharacters} />
     </div>
   );

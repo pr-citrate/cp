@@ -2,7 +2,7 @@ import styles from './../styles/Main.module.css';
 import Character from './Character';
 import Arrows from './Arrows';
 
-function Main({ characters, setCharacters }) {
+function Main({ characters, setCharacters, relations, setRelations }) {
   return (
     <div>
       <div className={styles.container}>
@@ -13,9 +13,10 @@ function Main({ characters, setCharacters }) {
               key={character.id}
               id={character.id}
               characters={characters}
+              setCharacters={setCharacters}
             />
           ))}
-          <Arrows characters={characters} />
+          <Arrows characters={characters} relations={relations} />
         </div>
         <div className={styles.footer}>footer</div>
       </div>

@@ -2,18 +2,18 @@ import { useState } from 'react';
 import uuid from 'react-uuid';
 import setPosition from '../utils/setPosition';
 
-function AddForm({ characters, setCharacters }) {
+function AddForm({ setCharacters }) {
   const [inputValue, setInputValue] = useState('');
 
-  const handleAddOnClick = () => {
+  const handleAdd = () => {
     if (inputValue.trim() !== '') {
-      setCharacters((prevChars) => {
-        const newChars = [
-          ...prevChars,
+      setCharacters((prevCharacters) => {
+        return setPosition([
+          ...prevCharacters,
           { name: inputValue.trim(), id: uuid() },
-        ];
-        return setPosition(newChars);
+        ]);
       });
+
       setInputValue('');
     }
   };
@@ -24,7 +24,7 @@ function AddForm({ characters, setCharacters }) {
 
   const handleInputKeyDown = (event) => {
     if (event.key === 'Enter') {
-      handleAddOnClick();
+      handleAdd();
     }
   };
 
@@ -35,7 +35,7 @@ function AddForm({ characters, setCharacters }) {
         onChange={handleInputOnChange}
         onKeyDown={handleInputKeyDown}
       />
-      <button onClick={handleAddOnClick}>Add</button>
+      <button onClick={handleAdd}>Add</button>
     </div>
   );
 }

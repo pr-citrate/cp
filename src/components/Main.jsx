@@ -1,8 +1,6 @@
 import styles from './../styles/Main.module.css';
 import Character from './Character';
 import Arrows from './Arrows';
-import { useEffect } from 'react';
-import c from './../constants/constants';
 
 function Main({ characters, setCharacters }) {
   return (
@@ -20,7 +18,7 @@ function Main({ characters, setCharacters }) {
         </div>
         <div className={styles.footer}>footer</div>
       </div>
-      <Arrows />
+      <Arrows characters={characters} />
     </div>
   );
 }

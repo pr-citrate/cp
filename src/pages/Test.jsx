@@ -1,8 +1,7 @@
 import Main from '../components/main';
 import AddForm from '../components/AddForm';
 import uuid from 'react-uuid';
-import { useState, useEffect } from 'react';
-import c from './../constants/constants';
+import { useState } from 'react';
 import setPosition from '../utils/setPosition';
 
 function Test() {
@@ -23,7 +22,7 @@ function Test() {
   return (
     <div>
       <Main characters={characters} setCharacters={setCharacters} />
-      <AddForm characters={characters} setCharacters={setCharacters} />
+      <AddForm setCharacters={setCharacters} />
     </div>
   );
 }

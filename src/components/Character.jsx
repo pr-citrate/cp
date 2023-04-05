@@ -45,6 +45,11 @@ function Character({ characters, id }) {
         <CharacterContextMenu
           x={menuPosition.x}
           y={menuPosition.y}
+          items={[
+            { label: 'Delete', action: 'delete' },
+            { label: 'Highlight', action: 'highlight' },
+            { label: 'Edit', action: 'edit' },
+          ]}
           onClose={handleCloseMenu}
           onItemClick={handleMenuClick}
         />

@@ -9,7 +9,7 @@ function CharacterContextMenu({ x, y, items, onItemClick, onClose }) {
   return (
     <div
       style={{
-        position: 'absolute',
+        position: 'fixed',
         left: x,
         top: y,
         backgroundColor: 'white',

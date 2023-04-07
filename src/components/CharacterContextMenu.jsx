@@ -22,6 +22,7 @@ function CharacterContextMenu({ x, y, items, onItemClick, onClose }) {
           {item.label}
         </div>
       ))}
+      {/* todo: merge this to character.jsx */}
     </div>
   );
 }

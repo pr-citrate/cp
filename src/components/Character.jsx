@@ -1,59 +1,36 @@
 import styles from './../styles/Character.module.css';
-import { useState } from 'react';
-import CharacterContextMenu from './CharacterContextMenu';
+import { useState, useRef } from 'react';
 
 function Character({ characters, id }) {
   const character = characters.find((obj) => obj.id === id);
-
-  const [menuPosition, setMenuPosition] = useState(null);
-
-  function handleContextMenu(event) {
+  const contextRef = useRef(null);
+  const [showContext, setShowContext] = useState(false);
+  const handleRightClick = (event) => {
     event.preventDefault();
-    setMenuPosition({ x: event.clientX, y: event.clientY });
-  }
+    event.stopPropagation();
+    setShowContext(true);
+    contextRef.current.style.top = event.clientY + 'px';
+    contextRef.current.style.left = event.clientX + 'px';
+  };
 
-  function handleMenuClick(action) {
-    switch (action) {
-      case 'delete':
-        // 삭제 로직
-        console.log('delete');
-        break;
-      case 'highlight':
-        // 강조 로직
-        break;
-      case 'edit':
-        // 수정 로직
-        break;
-      default:
-        break;
-    }
-    setMenuPosition(null);
-  }
-
-  function handleCloseMenu() {
-    setMenuPosition(null);
-  }
   return (
-    <div onContextMenu={handleContextMenu}>
+    <div>
       <button
+        onContextMenu={handleRightClick}
         className={styles.character}
         style={{ top: character.yPos + 'px', left: character.xPos + 'px' }}
       >
         {character.name}
       </button>
-      {menuPosition && (
-        <CharacterContextMenu
-          x={menuPosition.x}
-          y={menuPosition.y}
-          items={[
-            { label: 'Delete', action: 'delete' },
-            { label: 'Highlight', action: 'highlight' },
-            { label: 'Edit', action: 'edit' },
-          ]}
-          onClose={handleCloseMenu}
-          onItemClick={handleMenuClick}
-        />
-      )}
+      <div
+        ref={contextRef}
+        className={styles.contexts}
+        style={{ display: showContext ? 'flex' : 'none' }}
+      >
+        <button>delete</button>
+        <button>highlight</button>
+        <button>edit</button>
+      </div>
     </div>
   );
 }

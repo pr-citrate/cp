@@ -6,3 +6,10 @@
   height: $character-height;
   border-radius: 50%;
 }
+
+.contexts {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

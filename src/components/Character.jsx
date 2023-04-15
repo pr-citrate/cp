@@ -10,16 +10,17 @@ function Character({ characters, id }) {
     const handleOutsideClick = (event) => {
       if (contextRef.current && !contextRef.current.contains(event.target)) {
         setShowContext(false);
+        console.log(event);
       }
     };
+
     document.addEventListener('click', handleOutsideClick);
     document.addEventListener('contextmenu', handleOutsideClick);
-
     return () => {
       document.removeEventListener('click', handleOutsideClick);
       document.removeEventListener('contextmenu', handleOutsideClick);
     };
-  }, [contextRef]);
+  });
 
   const handleRightClick = (event) => {
     event.preventDefault();

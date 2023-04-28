@@ -1,13 +1,14 @@
 import styles from './../styles/Main.module.css';
 import Character from './Character';
 import Arrows from './Arrows';
+import preventRightClick from '../utils/preventRightClick';
 
 function Main({ characters, setCharacters, relations, setRelations }) {
   return (
     <div>
       <div className={styles.container}>
         <div className={styles.header}>header</div>
-        <div className={styles.main}>
+        <div className={styles.main} onContextMenu={preventRightClick}>
           {characters.map((character) => (
             <Character
               key={character.id}

@@ -19,12 +19,11 @@ function Character({ characters, id }) {
       }
     };
 
-    document.addEventListener('onmousedown', handleContextRemove);
+    document.addEventListener('mousedown', handleContextRemove);
     inputRef.current.value = character.name;
 
     return () => {
-      document.removeEventListener('click', handleContextRemove);
-      document.removeEventListener('contextmenu', handleContextRemove);
+      document.removeEventListener('mousedown', handleContextRemove);
     };
   });
 

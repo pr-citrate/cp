@@ -5,6 +5,9 @@
   width: $character-width;
   height: $character-height;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .contexts {
@@ -12,4 +15,30 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px #afbfc0 solid;
+  overflow: hidden;
+  min-width: 100px;
+}
+
+.name {
+  max-width: 100%;
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  &:focus {
+    outline: none;
+  }
+}
+
+.contextMenu {
+  border: none;
+  text-align: left;
+  border-top: 1px solid grey;
+  width: 100%;
+  height: 1.5em;
+  &:first-child {
+    border: none;
+  }
 }

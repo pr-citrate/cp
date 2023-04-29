@@ -41,6 +41,9 @@
   max-width: 100%;
   background-color: transparent;
   border: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   text-align: center;
 }
 .name:focus {

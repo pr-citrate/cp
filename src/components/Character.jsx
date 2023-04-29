@@ -58,9 +58,18 @@ function Character({
         ref={contextRef}
         style={{ display: showContext ? 'flex' : 'none' }}
       >
-        <button className={styles.contextMenu}>delete</button>
-        <button className={styles.contextMenu}>highlight</button>
-        <button className={styles.contextMenu}>edit</button>
+        <button
+          className={styles.contextMenu}
+          onClick={(event) => handleDelete(event, character.id)}
+        >
+          delete
+        </button>
+        <button className={styles.contextMenu} onClick={handleHighlight}>
+          highlight
+        </button>
+        <button className={styles.contextMenu} onClick={handleEdit}>
+          edit
+        </button>
       </div>
     </div>
   );

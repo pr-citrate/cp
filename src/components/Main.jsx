@@ -3,13 +3,15 @@ import Character from './Character';
 import Arrows from './Arrows';
 import preventRightClick from '../utils/preventRightClick';
 
-function Main({ characters, setCharacters, relations, setRelations }) {
-  const handleEdit = (event) => {};
-  const handleDelete = (event, id) => {
-    setCharacters(characters.filter((character) => !(character.id === id)));
-  };
-  const handleHighlight = (event) => {};
-
+function Main({
+  characters,
+  setCharacters,
+  relations,
+  setRelations,
+  handleEdit,
+  handleDelete,
+  handleHighlight,
+}) {
   return (
     <div>
       <div className={styles.container}>

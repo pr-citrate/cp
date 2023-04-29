@@ -1,7 +1,13 @@
 import styles from './../styles/Character.module.css';
 import { useState, useRef, useEffect } from 'react';
 
-function Character({ characters, id }) {
+function Character({
+  characters,
+  id,
+  handleEdit,
+  handleDelete,
+  handleHighlight,
+}) {
   const character = characters.find((obj) => obj.id === id);
   const contextRef = useRef(null);
   const inputRef = useRef(null);

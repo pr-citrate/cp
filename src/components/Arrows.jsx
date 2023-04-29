@@ -13,20 +13,21 @@ function Arrows({ characters }) {
 
     // clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    setTimeout(() => {
+      requestAnimationFrame(() => {
+        // draw dots
+        characters.forEach((character, index) => {
+          const [pointX, pointY] = getPointPosition(index, characters.length);
+          pointPositions = [...pointPositions, [pointX, pointY]];
 
-    requestAnimationFrame(() => {
-      // draw dots
-      characters.forEach((character, index) => {
-        const [pointX, pointY] = getPointPosition(index, characters.length);
-        pointPositions = [...pointPositions, [pointX, pointY]];
-
-        ctx.beginPath();
-        ctx.arc(pointX, pointY, c.pointSize / 2, 0, 2 * Math.PI);
-        ctx.fillStyle = 'black';
-        ctx.fill();
+          ctx.beginPath();
+          ctx.arc(pointX, pointY, c.pointSize / 2, 0, 2 * Math.PI);
+          ctx.fillStyle = 'black';
+          ctx.fill();
+        });
+        // draw arrows
       });
-      // draw arrows
-    });
+    }, 500);
   }, [characters]);
 
   return (

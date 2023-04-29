@@ -9,6 +9,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: top 0.5s, left 0.5s;
+  transition-timing-function: ease-in-out;
+  animation: fade-in ease-in-out 0.5s;
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    66% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }
 
 .contexts {
@@ -18,9 +33,10 @@
   align-items: flex-start;
   background-color: white;
   border-radius: 10px;
-  border: 1px #afbfc0 solid;
+  border: none;
   overflow: hidden;
   min-width: 100px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .name {

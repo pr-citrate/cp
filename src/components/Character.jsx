@@ -44,7 +44,7 @@ function Character({
   return (
     <div onContextMenu={handleContextMenu}>
       <button
-        className={styles.character}
+        className={`${styles.fadein} ${styles.character}`}
         style={{ top: character.yPos + 'px', left: character.xPos + 'px' }}
       >
         <input
@@ -60,7 +60,7 @@ function Character({
       >
         <button
           className={styles.contextMenu}
-          onClick={(event) => handleDelete(event, character.id)}
+          onClick={() => handleDelete(character.id)}
         >
           delete
         </button>

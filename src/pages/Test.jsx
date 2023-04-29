@@ -21,12 +21,6 @@ function Test() {
 
   const [relations, setRelations] = useState([]);
 
-  const handleEdit = (event) => {};
-  const handleDelete = (event, id) => {
-    setCharacters(characters.filter((character) => !(character.id === id)));
-  };
-  const handleHighlight = (event) => {};
-
   return (
     <div>
       <Main

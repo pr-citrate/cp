@@ -12,6 +12,10 @@
   transition-timing-function: ease-out;
 }
 
+.highlight {
+  box-shadow: 0px 0px 15px 5px rgba(255, 255, 0, 0.75);
+}
+
 .fadein {
   animation: fade-in ease-in 0.3s;
 }

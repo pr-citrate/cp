@@ -13,6 +13,7 @@ function Character({
   const inputRef = useRef(null);
   const [showContext, setShowContext] = useState(false);
   const [onEdit, setOnEdit] = useState(false);
+  const [onHighlight, setOnHighlight] = useState(false);
 
   useEffect(() => {
     const handleContextRemove = (event) => {
@@ -44,7 +45,9 @@ function Character({
   return (
     <div onContextMenu={handleContextMenu}>
       <button
-        className={`${styles.fadein} ${styles.character}`}
+        className={`${styles.fadein} ${styles.character} ${
+          onHighlight ? styles.highlight : ''
+        }`}
         style={{ top: character.yPos + 'px', left: character.xPos + 'px' }}
       >
         <input

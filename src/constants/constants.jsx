@@ -6,7 +6,7 @@ const c = {
   characterHeight: 50,
   pointSize: 5,
   pointPosition: 10,
-  animationDuration: 0.3,
+  animationDuration: 0.5,
 };
 
 export default c;

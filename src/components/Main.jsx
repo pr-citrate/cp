@@ -9,13 +9,11 @@ import c from '../constants/constants';
 const MemoizedCharacter = memo(Character);
 
 function Main({ characters, setCharacters, relations, setRelations }) {
-  const handleEdit = (event) => {};
   const handleDelete = (id) => {
     setCharacters(
       setPosition(characters.filter((character) => character.id !== id))
     );
   };
-  const handleHighlight = (event) => {};
 
   return (
     <div>
@@ -28,8 +26,6 @@ function Main({ characters, setCharacters, relations, setRelations }) {
               id={character.id}
               characters={characters}
               setCharacters={setCharacters}
-              handleEdit={handleEdit}
-              handleHighlight={handleHighlight}
               handleDelete={handleDelete}
             />
           ))}

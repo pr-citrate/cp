@@ -1,19 +1,22 @@
 import styles from './../styles/Character.module.css';
 import { useState, useRef, useEffect } from 'react';
 
-function Character({
-  characters,
-  id,
-  handleEdit,
-  handleDelete,
-  handleHighlight,
-}) {
+function Character({ characters, id, handleDelete }) {
   const character = characters.find((obj) => obj.id === id);
   const contextRef = useRef(null);
   const inputRef = useRef(null);
   const [showContext, setShowContext] = useState(false);
   const [onEdit, setOnEdit] = useState(false);
   const [onHighlight, setOnHighlight] = useState(false);
+
+  const handleEdit = () => {
+    setOnEdit(true);
+    setShowContext(false);
+  };
+  const handleHighlight = () => {
+    setOnHighlight(!onHighlight);
+    setShowContext(false);
+  };
 
   useEffect(() => {
     const handleContextRemove = (event) => {
@@ -68,7 +71,7 @@ function Character({
           delete
         </button>
         <button className={styles.contextMenu} onClick={handleHighlight}>
-          highlight
+          {onHighlight ? 'cancel highlighting' : 'highlight'}
         </button>
         <button className={styles.contextMenu} onClick={handleEdit}>
           edit

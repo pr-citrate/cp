@@ -1,6 +1,6 @@
 const c = {
   imgWidth: 1200,
-  imgHeight: 630,
+  imgHeight: 675,
   imgPadding: 30,
   characterWidth: 50,
   characterHeight: 50,

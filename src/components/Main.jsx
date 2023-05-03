@@ -13,7 +13,21 @@ function Main({ characters, setCharacters, relations, setRelations }) {
       setPosition(characters.filter((character) => character.id !== id))
     );
   };
-
+  const updateRelations = (left, right) => {
+    (prev) => {
+      const idx = prevRelations.findIndex(
+        (obj) => obj.left === left && obj.right === right
+      );
+      if (idx !== -1) {
+        return [
+          ...prevRelations.slice(0, idx),
+          ...prevRelations.slice(idx + 1),
+        ];
+      } else {
+        return [...prevRelations, { left: left, right: right }];
+      }
+    };
+  };
   return (
     <div>
       <div className={styles.container}>
@@ -26,9 +40,10 @@ function Main({ characters, setCharacters, relations, setRelations }) {
               characters={characters}
               setCharacters={setCharacters}
               handleDelete={handleDelete}
+              updateRelations={updateRelations}
             />
           ))}
-          <Arrows characters={characters} relations={relations} />
+          <Arrows characters={characters} />
         </div>
         <div className={styles.footer}>footer</div>
       </div>

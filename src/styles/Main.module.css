@@ -1,17 +1,17 @@
 .container {
   width: 1200px;
-  height: 630px;
+  height: 675px;
   display: flex;
   flex-direction: row;
   background-color: skyblue;
 }
 
 .footer, .header {
-  width: 285px;
+  width: 262.5px;
 }
 
 .main {
-  width: 630px;
+  width: 675px;
   position: relative;
   background-color: blue;
 }

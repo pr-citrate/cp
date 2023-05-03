@@ -18,7 +18,6 @@ function Test() {
       { id: uuid(), name: 'c9' },
     ])
   );
-
   const [relations, setRelations] = useState([]);
 
   return (

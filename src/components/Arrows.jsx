@@ -15,6 +15,7 @@ function Arrows({ characters }) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     setTimeout(() => {
       requestAnimationFrame(() => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         // draw dots
         characters.forEach((character, index) => {
           const [pointX, pointY] = getPointPosition(index, characters.length);

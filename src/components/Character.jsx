@@ -12,6 +12,9 @@ function Character({ characters, id, handleDelete }) {
   const handleEdit = () => {
     setOnEdit(true);
     setShowContext(false);
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 50);
   };
   const handleHighlight = () => {
     setOnHighlight(!onHighlight);

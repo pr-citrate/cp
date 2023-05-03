@@ -18,7 +18,7 @@
 }
 
 .highlight {
-  background-color: rgba(255, 255, 0, 0.75);
+  background-color: rgb(255, 255, 0);
 }
 
 .fadein {
@@ -39,6 +39,7 @@
 .contexts {
   position: fixed;
   display: flex;
+  z-index: 1;
   flex-direction: column;
   align-items: flex-start;
   background-color: white;

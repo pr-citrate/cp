@@ -4,7 +4,6 @@ import Arrows from './Arrows';
 import preventRightClick from '../utils/preventRightClick';
 import setPosition from '../utils/setPosition';
 import { memo } from 'react';
-import c from '../constants/constants';
 
 const MemoizedCharacter = memo(Character);
 

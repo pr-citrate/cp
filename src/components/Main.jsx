@@ -7,14 +7,18 @@ import { memo } from 'react';
 
 const MemoizedCharacter = memo(Character);
 
-function Main({ characters, setCharacters, relations, setRelations }) {
+function Main({ characters, setCharacters }) {
+  const [relations, setRelations] = useState([]);
+  const [selection, setSelection] = useState('');
+
   const handleDelete = (id) => {
     setCharacters(
       setPosition(characters.filter((character) => character.id !== id))
     );
   };
+
   const updateRelations = (left, right) => {
-    (prev) => {
+    setRelations((prev) => {
       const idx = prevRelations.findIndex(
         (obj) => obj.left === left && obj.right === right
       );
@@ -26,7 +30,7 @@ function Main({ characters, setCharacters, relations, setRelations }) {
       } else {
         return [...prevRelations, { left: left, right: right }];
       }
-    };
+    });
   };
   return (
     <div>

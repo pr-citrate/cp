@@ -18,16 +18,10 @@ function Test() {
       { id: uuid(), name: 'c9' },
     ])
   );
-  const [relations, setRelations] = useState([]);
 
   return (
     <div>
-      <Main
-        characters={characters}
-        setCharacters={setCharacters}
-        relations={relations}
-        setRelations={setRelations}
-      />
+      <Main characters={characters} setCharacters={setCharacters} />
       <AddForm setCharacters={setCharacters} />
     </div>
   );

@@ -3,6 +3,7 @@ import AddForm from '../components/AddForm';
 import uuid from 'react-uuid';
 import { useState } from 'react';
 import setPosition from '../utils/setPosition';
+import styles from './../styles/Test.module.css';
 
 function Test() {
   const [characters, setCharacters] = useState(

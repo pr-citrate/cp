@@ -3,7 +3,7 @@ import c from './../constants/constants';
 import styles from './../styles/Arrows.module.css';
 import getPointPosition from '../utils/getPointPositions';
 
-function Arrows({ characters }) {
+function Arrows({ characters, relations }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {

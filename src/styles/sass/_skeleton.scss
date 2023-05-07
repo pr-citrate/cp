@@ -1,24 +1,47 @@
-@import './../../constants/constants.scss';
+@use './../../constants/constants' as *;
+
+@mixin flex($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
+%side {
+  width: calc(($img-width - $img-height) / 2);
+}
+
+.container {
+  width: $img-width;
+  height: $img-height;
+  @include flex(row);
+}
+
+.header {
+  @extend %side;
+}
+
+.main {
+  width: $img-height;
+  position: relative;
+}
+
+.footer {
+  @extend %side;
+}
 
 .character {
+  @include flex;
   position: absolute;
   width: $character-width;
   height: $character-height;
   border-radius: 50%;
   border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   transition: top $animation-duration, left $animation-duration;
   transition-timing-function: ease-out;
   &:focus-visible {
     outline: none;
   }
-}
-
-.highlight {
-  background-color: rgb(255, 255, 0);
 }
 
 .fadein {
@@ -37,22 +60,18 @@
 }
 
 .contexts {
+  @include flex(column);
+  // align-items: flex-start;
   position: fixed;
-  display: flex;
   z-index: 1;
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: white;
   border-radius: 10px;
   border: none;
   overflow: hidden;
-  min-width: 150px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  min-width: 50em;
 }
 
 .name {
   max-width: 100%;
-  background-color: transparent;
   border: none;
   user-select: none;
   text-align: center;
@@ -63,7 +82,6 @@
 
 .contextMenu {
   border: none;
-  text-align: left;
   border-top: 1px solid grey;
   width: 100%;
   height: 1.5em;
@@ -73,4 +91,9 @@
   &:first-child {
     border: none;
   }
+}
+
+.canvas {
+  display: block;
+  pointer-events: none;
 }

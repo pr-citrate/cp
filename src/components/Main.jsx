@@ -3,13 +3,14 @@ import Character from './Character';
 import Arrows from './Arrows';
 import preventRightClick from '../utils/preventRightClick';
 import setPosition from '../utils/setPosition';
-import { memo } from 'react';
+import { memo, useState } from 'react';
 
 const MemoizedCharacter = memo(Character);
 
 function Main({ characters, setCharacters }) {
   const [relations, setRelations] = useState([]);
   const [selection, setSelection] = useState('');
+  const [pointCoordinate, setPointCoordinate] = useState([]);
 
   const handleDelete = (id) => {
     setCharacters(
@@ -18,7 +19,7 @@ function Main({ characters, setCharacters }) {
   };
 
   const updateRelations = (left, right) => {
-    setRelations((prev) => {
+    setRelations((prevRelations) => {
       const idx = prevRelations.findIndex(
         (obj) => obj.left === left && obj.right === right
       );
@@ -32,6 +33,7 @@ function Main({ characters, setCharacters }) {
       }
     });
   };
+
   return (
     <div>
       <div className={styles.container}>
@@ -47,7 +49,7 @@ function Main({ characters, setCharacters }) {
               updateRelations={updateRelations}
             />
           ))}
-          <Arrows characters={characters} />
+          <Arrows characters={characters} relations={relations} />
         </div>
         <div className={styles.footer}>footer</div>
       </div>

@@ -1,9 +1,12 @@
 import Main from '../components/main';
 import AddForm from '../components/AddForm';
 import uuid from 'react-uuid';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import setPosition from '../utils/setPosition';
 import styles from './../styles/Test.module.css';
+import { createContext } from 'react';
+
+export const stylesContext = createContext({ styles: '' });
 
 function Test() {
   const [characters, setCharacters] = useState(
@@ -21,10 +24,12 @@ function Test() {
   );
 
   return (
-    <div>
-      <Main characters={characters} setCharacters={setCharacters} />
-      <AddForm setCharacters={setCharacters} />
-    </div>
+    <stylesContext.Provider value={styles}>
+      <div>
+        <Main characters={characters} setCharacters={setCharacters} />
+        <AddForm setCharacters={setCharacters} />
+      </div>
+    </stylesContext.Provider>
   );
 }
 export default Test;

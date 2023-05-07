@@ -1,13 +1,16 @@
-import styles from './../styles/Main.module.css';
-import Character from './Character';
-import Arrows from './Arrows';
+import { memo, useState, useContext } from 'react';
+import { stylesContext } from '../pages/Test';
+
 import preventRightClick from '../utils/preventRightClick';
 import setPosition from '../utils/setPosition';
-import { memo, useState } from 'react';
+
+import Character from './Character';
+import Arrows from './Arrows';
 
 const MemoizedCharacter = memo(Character);
 
 function Main({ characters, setCharacters }) {
+  const styles = useContext(stylesContext);
   const [relations, setRelations] = useState([]);
   const [selection, setSelection] = useState('');
   const [pointCoordinate, setPointCoordinate] = useState([]);

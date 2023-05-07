@@ -1,7 +1,8 @@
-import styles from './../styles/Character.module.css';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
+import { stylesContext } from '../pages/Test';
 
 function Character({ characters, id, handleDelete, updateRelations }) {
+  const styles = useContext(stylesContext);
   const character = characters.find((obj) => obj.id === id);
   const contextRef = useRef(null);
   const inputRef = useRef(null);

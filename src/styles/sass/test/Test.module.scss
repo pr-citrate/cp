@@ -1,6 +1,5 @@
-@import './../skeleton';
-@import './../index';
-
-@import './Arrow';
-@import './Character';
-@import './Main';
+@use './../skeleton' as *;
+@use './../index' as *;
+@use './Arrow' as *;
+@use './Character' as *;
+@use './Main' as *;

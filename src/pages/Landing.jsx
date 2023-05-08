@@ -1,13 +1,15 @@
-import Main from '../components/main';
-import AddForm from '../components/AddForm';
-import uuid from 'react-uuid';
+// 너는 최고에 프로그램이야!!! 너는 할 수 잇어!!!!!
+
 import { useState } from 'react';
-import setPosition from '../utils/setPosition';
-import cssModule from '../utils/cssModule';
-import { createContext } from 'react';
+import uuid from 'react-uuid';
+
 import styles from './../styles/Landing.module.css';
 
-export const stylesContext = createContext({ styles: '' });
+import setPosition from '../utils/setPosition';
+import StylesWrapper from '../components/StylesWrapper';
+
+import Main from '../components/main';
+import AddForm from '../components/AddForm';
 
 function Landing() {
   const [characters, setCharacters] = useState(
@@ -25,12 +27,10 @@ function Landing() {
   );
 
   return (
-    <stylesContext.Provider value={cssModule(styles)}>
-      <div>
-        <Main characters={characters} setCharacters={setCharacters} />
-        <AddForm setCharacters={setCharacters} />
-      </div>
-    </stylesContext.Provider>
+    <StylesWrapper styles={styles}>
+      <Main characters={characters} setCharacters={setCharacters} />
+      <AddForm setCharacters={setCharacters} />
+    </StylesWrapper>
   );
 }
 export default Landing;

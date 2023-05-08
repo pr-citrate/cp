@@ -1,5 +1,5 @@
 import { memo, useState, useContext } from 'react';
-import { stylesContext } from '../pages/Test';
+import { stylesContext } from './StylesWrapper';
 
 import preventRightClick from '../utils/preventRightClick';
 import setPosition from '../utils/setPosition';

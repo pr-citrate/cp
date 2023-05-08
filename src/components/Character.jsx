@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useContext } from 'react';
-import { stylesContext } from '../pages/Test';
+import { stylesContext } from './StylesWrapper';
 
 function Character({ characters, id, handleDelete, updateRelations }) {
   const styles = useContext(stylesContext);

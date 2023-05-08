@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import uuid from 'react-uuid';
 import setPosition from '../utils/setPosition';
-import { stylesContext } from '../pages/Test';
+import { stylesContext } from './StylesWrapper';
 
 function AddForm({ setCharacters }) {
   const styles = useContext(stylesContext);

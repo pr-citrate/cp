@@ -59,7 +59,7 @@
   }
 }
 
-.contexts {
+.context-menu-container {
   @include flex(column);
   position: fixed;
   z-index: 1;
@@ -80,7 +80,7 @@
   }
 }
 
-.contextMenu {
+.context-menu {
   border: none;
 
   border-top: 1px solid grey;

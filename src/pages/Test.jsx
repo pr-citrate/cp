@@ -4,6 +4,7 @@ import uuid from 'react-uuid';
 import { useState, useContext } from 'react';
 import setPosition from '../utils/setPosition';
 import styles from './../styles/Test.module.css';
+import cssModule from '../utils/cssModule';
 import { createContext } from 'react';
 
 export const stylesContext = createContext({ styles: '' });
@@ -24,7 +25,7 @@ function Test() {
   );
 
   return (
-    <stylesContext.Provider value={styles}>
+    <stylesContext.Provider value={cssModule(styles)}>
       <div>
         <Main characters={characters} setCharacters={setCharacters} />
         <AddForm setCharacters={setCharacters} />

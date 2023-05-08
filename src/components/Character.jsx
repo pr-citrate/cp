@@ -64,7 +64,7 @@ function Character({ characters, id, handleDelete, updateRelations }) {
         ></input>
       </button>
       <div
-        className={styles.contexts}
+        className={styles.contextMenuContainer}
         ref={contextRef}
         style={{ display: showContext ? 'flex' : 'none' }}
       >

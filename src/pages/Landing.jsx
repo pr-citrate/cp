@@ -1,15 +1,15 @@
 import Main from '../components/main';
 import AddForm from '../components/AddForm';
 import uuid from 'react-uuid';
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import setPosition from '../utils/setPosition';
-import styles from './../styles/Test.module.css';
 import cssModule from '../utils/cssModule';
 import { createContext } from 'react';
+import styles from './../styles/Landing.module.css';
 
 export const stylesContext = createContext({ styles: '' });
 
-function Index() {
+function Landing() {
   const [characters, setCharacters] = useState(
     setPosition([
       { id: uuid(), name: 'c1' },
@@ -27,11 +27,10 @@ function Index() {
   return (
     <stylesContext.Provider value={cssModule(styles)}>
       <div>
-        <div style={{ height: 100 + 'vh', backgroundColor: 'orange' }}></div>
         <Main characters={characters} setCharacters={setCharacters} />
         <AddForm setCharacters={setCharacters} />
       </div>
     </stylesContext.Provider>
   );
 }
-export default Index;
+export default Landing;

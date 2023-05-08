@@ -1,7 +1,7 @@
 import Main from '../components/main';
 import AddForm from '../components/AddForm';
 import uuid from 'react-uuid';
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import setPosition from '../utils/setPosition';
 import styles from './../styles/Test.module.css';
 import cssModule from '../utils/cssModule';

@@ -1,5 +1,6 @@
-import cssModule from '../utils/cssModule';
 import { createContext } from 'react';
+
+import cssModule from './cssModule';
 
 export const stylesContext = createContext({ styles: '' });
 

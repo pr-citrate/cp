@@ -1,13 +1,13 @@
+import { useState } from 'react';
+import uuid from 'react-uuid';
+
+import styles from './../styles/Test.module.css';
+
+import setPosition from '../utils/setPosition';
+import StylesWrapper from '../utils/StylesWrapper';
+
 import Main from '../components/main';
 import AddForm from '../components/AddForm';
-import uuid from 'react-uuid';
-import { useState } from 'react';
-import setPosition from '../utils/setPosition';
-import styles from './../styles/Test.module.css';
-import cssModule from '../utils/cssModule';
-import { createContext } from 'react';
-
-export const stylesContext = createContext({ styles: '' });
 
 function Test() {
   const [characters, setCharacters] = useState(
@@ -25,12 +25,10 @@ function Test() {
   );
 
   return (
-    <stylesContext.Provider value={cssModule(styles)}>
-      <div>
-        <Main characters={characters} setCharacters={setCharacters} />
-        <AddForm setCharacters={setCharacters} />
-      </div>
-    </stylesContext.Provider>
+    <StylesWrapper styles={styles}>
+      <Main characters={characters} setCharacters={setCharacters} />
+      <AddForm setCharacters={setCharacters} />
+    </StylesWrapper>
   );
 }
 export default Test;

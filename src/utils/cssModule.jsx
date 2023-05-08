@@ -1,4 +1,4 @@
-export default function cssModule(obj) {
+function cssModule(obj) {
   const result = {};
   for (let key in obj) {
     if (obj.hasOwnProperty(key)) {
@@ -10,3 +10,4 @@ export default function cssModule(obj) {
   }
   return result;
 }
+export default cssModule;

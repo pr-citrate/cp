@@ -3,10 +3,11 @@ import { useEffect, useRef, useContext } from 'react';
 import c from './../constants/constants';
 
 import getPointPosition from '../utils/getPointPositions';
-import { stylesContext } from '../utils/StylesWrapper';
+import { stylesContext, userStylesContext } from '../utils/StylesWrapper';
 
 function Arrows({ characters, relations }) {
   const styles = useContext(stylesContext);
+  const userStyles = useContext(userStylesContext);
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -31,13 +32,14 @@ function Arrows({ characters, relations }) {
         });
         // draw arrows
       });
-    }, 500);
+    }, c.animationDuration * 1000);
   }, [characters]);
 
   return (
     <canvas
       ref={canvasRef}
       className={styles.canvas}
+      style={userStyles.s}
       width={c.imgWidth}
       height={c.imgHeight}
     ></canvas>

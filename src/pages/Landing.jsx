@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import uuid from 'react-uuid';
+import { json, useLocation } from 'react-router-dom';
 
 import styles from './../styles/Landing.module.css';
 
@@ -10,6 +11,8 @@ import Main from '../components/main';
 import AddForm from '../components/AddForm';
 
 function Landing() {
+  const location = useLocation();
+
   const [characters, setCharacters] = useState(
     setPosition([
       { id: uuid(), name: 'c1' },
@@ -24,8 +27,22 @@ function Landing() {
     ])
   );
 
+  const handleQueryString = (queryString) => {
+    try {
+      return JSON.parse(queryString);
+    } catch {
+      if (queryString) {
+        alert('URL IS NOT VALID');
+      }
+      return {};
+    }
+  };
+
   return (
-    <StylesWrapper styles={styles}>
+    <StylesWrapper
+      styles={styles}
+      userStyles={handleQueryString(location.styles)}
+    >
       <Main characters={characters} setCharacters={setCharacters} />
       <AddForm setCharacters={setCharacters} />
     </StylesWrapper>

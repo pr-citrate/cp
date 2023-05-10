@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import uuid from 'react-uuid';
 
-import styles from './../styles/Test.module.css';
+// import styles from './../styles/Test.module.css';
 
 import setPosition from '../utils/setPosition';
 import StylesWrapper from '../utils/StylesWrapper';

@@ -54,7 +54,7 @@ function Character({ characters, id, handleDelete, updateRelations }) {
   return (
     <div onContextMenu={handleContextMenu}>
       <button
-        className={`${styles.fadein} ${styles.character} ${
+        className={`character ${styles.fadein} ${styles.character} ${
           onHighlight ? styles.highlight : ''
         }`}
         style={{

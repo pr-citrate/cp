@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import uuid from 'react-uuid';
-import { json, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import QueryString from 'qs';
 
-import styles from './../styles/Landing.module.css';
+// import styles from './../styles/Landing.module.css';
+
+import './../styles/Landing.css';
 
 import setPosition from '../utils/setPosition';
 import StylesWrapper from '../utils/StylesWrapper';
@@ -27,21 +30,10 @@ function Landing() {
     ])
   );
 
-  const handleQueryString = (queryString) => {
-    try {
-      return JSON.parse(queryString);
-    } catch {
-      if (queryString) {
-        alert('URL IS NOT VALID');
-      }
-      return {};
-    }
-  };
-
   return (
     <StylesWrapper
-      styles={styles}
-      userStyles={handleQueryString(location.styles)}
+      // styles={styles}
+      userStyles={QueryString.parse(location.search)}
     >
       <Main characters={characters} setCharacters={setCharacters} />
       <AddForm setCharacters={setCharacters} />

@@ -37,15 +37,14 @@
   height: $character-height;
   border-radius: 50%;
   border: none;
-  transition: top $animation-duration, left $animation-duration;
-  transition-timing-function: ease-out;
+  transition: top $animation-duration ease, left $animation-duration ease;
   &:focus-visible {
     outline: none;
   }
 }
 
 .fadein {
-  animation: fade-in ease-in $animation-duration;
+  animation: fade-in ease $animation-duration;
   @keyframes fade-in {
     0% {
       opacity: 0;

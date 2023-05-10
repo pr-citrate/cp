@@ -1,17 +1,11 @@
 import { createContext } from 'react';
 
-import cssModule from './cssModule';
-
 export const stylesContext = createContext({ styles: '' });
 export const userStylesContext = createContext({ styles: '' });
 
-function StylesWrapper({ styles, userStyles, children }) {
+function StylesWrapper({ styles, children }) {
   return (
-    <userStylesContext.Provider value={userStyles}>
-      <stylesContext.Provider value={cssModule(styles)}>
-        {children}
-      </stylesContext.Provider>
-    </userStylesContext.Provider>
+    <stylesContext.Provider value={styles}>{children}</stylesContext.Provider>
   );
 }
 export default StylesWrapper;

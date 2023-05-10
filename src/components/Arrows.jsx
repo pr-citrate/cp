@@ -38,8 +38,8 @@ function Arrows({ characters, relations }) {
   return (
     <canvas
       ref={canvasRef}
-      className={styles.canvas}
-      style={userStyles.s}
+      className={`canvas`}
+      style={styles.canvas}
       width={c.imgWidth}
       height={c.imgHeight}
     ></canvas>

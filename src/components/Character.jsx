@@ -1,10 +1,9 @@
 import { useState, useRef, useEffect, useContext } from 'react';
 
-import { stylesContext, userStylesContext } from '../utils/StylesWrapper';
+import { stylesContext } from '../utils/StylesWrapper';
 
 function Character({ characters, id, handleDelete, updateRelations }) {
   const styles = useContext(stylesContext);
-  const userStyles = useContext(userStylesContext);
   const character = characters.find((obj) => obj.id === id);
   const contextRef = useRef(null);
   const inputRef = useRef(null);
@@ -54,47 +53,45 @@ function Character({ characters, id, handleDelete, updateRelations }) {
   return (
     <div onContextMenu={handleContextMenu}>
       <button
-        className={`character ${styles.fadein} ${styles.character} ${
-          onHighlight ? styles.highlight : ''
-        }`}
+        className={`character fadein ${onHighlight ? 'highlight' : ''}`}
         style={{
           top: character.yPos + 'px',
           left: character.xPos + 'px',
-          ...userStyles.character,
+          ...styles.character,
         }}
       >
         <input
-          className={styles.name}
-          style={userStyles.name}
+          className={`name`}
+          style={styles.name}
           ref={inputRef}
           disabled={onEdit ? false : true}
         ></input>
       </button>
       <div
-        className={styles.contextMenuContainer}
+        className={`context-menu-container`}
         ref={contextRef}
         style={{
           display: showContext ? 'flex' : 'none',
-          ...userStyles.contextMenuContainer,
+          ...styles.contextMenuContainer,
         }}
       >
         <button
-          style={userStyles.contextMenu}
-          className={styles.contextMenu}
+          style={styles.contextMenu}
+          className={`context-menu`}
           onClick={() => handleDelete(character.id)}
         >
           delete
         </button>
         <button
-          className={styles.contextMenu}
-          style={userStyles.contextMenu}
+          className={`context-menu`}
+          style={styles.contextMenu}
           onClick={handleHighlight}
         >
           {onHighlight ? 'cancel highlighting' : 'highlight'}
         </button>
         <button
-          className={styles.contextMenu}
-          style={userStyles.contextMenu}
+          className={`context-menu`}
+          style={styles.contextMenu}
           onClick={handleEdit}
         >
           edit

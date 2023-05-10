@@ -1,5 +1,5 @@
 import { memo, useState, useContext } from 'react';
-import { stylesContext, userStylesContext } from '../utils/StylesWrapper';
+import { stylesContext } from '../utils/StylesWrapper';
 
 import preventRightClick from '../utils/preventRightClick';
 import setPosition from '../utils/setPosition';
@@ -11,7 +11,6 @@ const MemoizedCharacter = memo(Character);
 
 function Main({ characters, setCharacters }) {
   const styles = useContext(stylesContext);
-  const userStyles = useContext(userStylesContext);
   const [relations, setRelations] = useState([]);
   const [selection, setSelection] = useState('');
   const [pointCoordinate, setPointCoordinate] = useState([]);
@@ -39,13 +38,13 @@ function Main({ characters, setCharacters }) {
   };
 
   return (
-    <div className={styles.container} style={userStyles.container}>
-      <div className={styles.header} style={userStyles.header}>
+    <div className={`container`} style={styles.container}>
+      <div className={`header`} style={styles.header}>
         header
       </div>
       <div
-        className={styles.main}
-        style={userStyles.main}
+        className={`main`}
+        style={styles.main}
         onContextMenu={preventRightClick}
       >
         {characters.map((character) => (
@@ -60,7 +59,7 @@ function Main({ characters, setCharacters }) {
         ))}
         <Arrows characters={characters} relations={relations} />
       </div>
-      <div className={styles.footer} style={userStyles.footer}>
+      <div className={`footer`} style={styles.footer}>
         footer
       </div>
     </div>

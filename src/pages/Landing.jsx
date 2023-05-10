@@ -29,12 +29,11 @@ function Landing() {
       { id: uuid(), name: 'c9' },
     ])
   );
-
+  const styles = QueryString.parse(location.search, {
+    ignoreQueryPrefix: true,
+  });
   return (
-    <StylesWrapper
-      // styles={styles}
-      userStyles={QueryString.parse(location.search)}
-    >
+    <StylesWrapper styles={styles}>
       <Main characters={characters} setCharacters={setCharacters} />
       <AddForm setCharacters={setCharacters} />
     </StylesWrapper>

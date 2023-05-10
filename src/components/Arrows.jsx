@@ -3,11 +3,10 @@ import { useEffect, useRef, useContext } from 'react';
 import c from './../constants/constants';
 
 import getPointPosition from '../utils/getPointPositions';
-import { stylesContext, userStylesContext } from '../utils/StylesWrapper';
+import { stylesContext } from '../utils/StylesWrapper';
 
 function Arrows({ characters, relations }) {
   const styles = useContext(stylesContext);
-  const userStyles = useContext(userStylesContext);
   const canvasRef = useRef(null);
 
   useEffect(() => {

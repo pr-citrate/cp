@@ -3,8 +3,6 @@ import uuid from 'react-uuid';
 import { useLocation } from 'react-router-dom';
 import QueryString from 'qs';
 
-// import styles from './../styles/Landing.module.css';
-
 import './../styles/Landing.css';
 
 import setPosition from '../utils/setPosition';
@@ -29,11 +27,13 @@ function Landing() {
       { id: uuid(), name: 'c9' },
     ])
   );
-  const styles = QueryString.parse(location.search, {
-    ignoreQueryPrefix: true,
-  });
+
   return (
-    <StylesWrapper styles={styles}>
+    <StylesWrapper
+      styles={QueryString.parse(location.search, {
+        ignoreQueryPrefix: true,
+      })}
+    >
       <Main characters={characters} setCharacters={setCharacters} />
       <AddForm setCharacters={setCharacters} />
     </StylesWrapper>

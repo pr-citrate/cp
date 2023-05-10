@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import uuid from 'react-uuid';
 
-// import styles from './../styles/Test.module.css';
-
 import setPosition from '../utils/setPosition';
 import StylesWrapper from '../utils/StylesWrapper';
 
 import Main from '../components/main';
 import AddForm from '../components/AddForm';
+import './../styles/Test.css';
 
 function Test() {
   const [characters, setCharacters] = useState(
@@ -25,7 +24,7 @@ function Test() {
   );
 
   return (
-    <StylesWrapper styles={styles}>
+    <StylesWrapper styles={{}}>
       <Main characters={characters} setCharacters={setCharacters} />
       <AddForm setCharacters={setCharacters} />
     </StylesWrapper>

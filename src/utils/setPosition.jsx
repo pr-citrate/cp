@@ -23,10 +23,53 @@ function setPosition(characters) {
     return pos;
   }
 
+  // const updatePointPositions = (characters) => {
+  //   let pointPositions = [];
+  //   const length = characters.length;
+  //   characters.forEach((characters, index) => {
+  //     const [pointX, pointY] = getPointPositions(index, length);
+  //     pointPositions = [...pointPositions, [pointX, pointY]];
+  //   });
+  //   return characters.map((obj, idx) => ({
+  //     ...obj,
+  //     pointPos: pointPositions[idx],
+  //   }));
+  // };
+
+  function getPointXPos(order, total) {
+    const angle = (order / total) * 2 * Math.PI;
+    let pos = c.imgHeight / 2;
+    pos =
+      pos -
+      Math.sin(angle) *
+        (c.imgHeight / 2 -
+          (c.imgPadding +
+            c.characterHeight +
+            c.pointPosition +
+            c.pointSize / 2));
+    return pos;
+  }
+
+  function getPointYPos(order, total) {
+    const angle = (order / total) * 2 * Math.PI;
+    let pos = c.imgHeight / 2;
+    pos =
+      pos -
+      Math.cos(angle) *
+        (c.imgHeight / 2 -
+          (c.imgPadding +
+            c.characterHeight +
+            c.pointPosition +
+            c.pointSize / 2));
+    return pos;
+  }
+
   return characters.map((obj, index) => ({
     ...obj,
     xPos: getXPos(index, characters.length),
     yPos: getYPos(index, characters.length),
+    pointXPos: getPointXPos(index, characters.length),
+    pointYPos: getPointYPos(index, characters.length),
   }));
 }
 

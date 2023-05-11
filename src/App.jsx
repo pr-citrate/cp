@@ -5,8 +5,8 @@ import Landing from './pages/Landing';
 function App() {
   return (
     <Routes>
-      <Route path='/test' element={<Test />} />
       <Route path='/' element={<Landing />} />
+      <Route path='/test' element={<Test />} />
     </Routes>
   );
 }

@@ -57,7 +57,11 @@ function Main({ characters, setCharacters }) {
             updateRelations={updateRelations}
           />
         ))}
-        <Arrows characters={characters} relations={relations} />
+        <Arrows
+          characters={characters}
+          setCharacters={setCharacters}
+          relations={relations}
+        />
       </div>
       <div className={`footer`} style={styles.footer}>
         footer

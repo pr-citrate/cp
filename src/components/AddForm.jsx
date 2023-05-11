@@ -4,7 +4,7 @@ import uuid from 'react-uuid';
 import setPosition from '../utils/setPosition';
 import { stylesContext } from '../utils/StylesWrapper';
 
-function AddForm({ setCharacters }) {
+function AddForm({ setCharacters, updatePointsPositions }) {
   const styles = useContext(stylesContext);
   const [inputValue, setInputValue] = useState('');
 

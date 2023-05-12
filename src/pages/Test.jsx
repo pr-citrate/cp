@@ -6,9 +6,9 @@ import StylesWrapper from '../utils/StylesWrapper';
 
 import Main from '../components/main';
 import AddForm from '../components/AddForm';
-import './../styles/Test.css';
 
 function Test() {
+  import('./../styles/Test.css');
   const [characters, setCharacters] = useState(
     setPosition([
       { id: uuid(), name: 'c1' },

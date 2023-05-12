@@ -1,9 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import uuid from 'react-uuid';
 import { useLocation } from 'react-router-dom';
 import QueryString from 'qs';
-
-import './../styles/Landing.css';
 
 import setPosition from '../utils/setPosition';
 import StylesWrapper from '../utils/StylesWrapper';
@@ -12,6 +10,7 @@ import Main from '../components/main';
 import AddForm from '../components/AddForm';
 
 function Landing() {
+  import('./../styles/Landing.css');
   const location = useLocation();
 
   const [characters, setCharacters] = useState(

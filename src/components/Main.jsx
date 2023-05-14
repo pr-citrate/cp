@@ -11,7 +11,19 @@ const MemoizedCharacter = memo(Character);
 
 function Main({ characters, setCharacters }) {
   const styles = useContext(stylesContext);
-  const [relations, setRelations] = useState([]);
+  console.log(characters);
+  const [relations, setRelations] = useState([
+    { left: characters[3], right: characters[7] },
+    { left: characters[7], right: characters[3] },
+    { left: characters[2], right: characters[5] },
+    { left: characters[2], right: characters[5] },
+    { left: characters[1], right: characters[6] },
+    { left: characters[8], right: characters[2] },
+    { left: characters[0], right: characters[3] },
+    { left: characters[1], right: characters[2] },
+    { left: characters[4], right: characters[2] },
+    { left: characters[8], right: characters[5] },
+  ]);
   const [selection, setSelection] = useState('');
   const [pointCoordinate, setPointCoordinate] = useState([]);
 

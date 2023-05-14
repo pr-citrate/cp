@@ -14,6 +14,10 @@ function Arrows({ characters, setCharacters, relations }) {
 
     // clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'black';
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 1;
+    ctx.lineCap = 'round';
     setTimeout(() => {
       requestAnimationFrame(() => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -23,17 +27,46 @@ function Arrows({ characters, setCharacters, relations }) {
           const pointY = character.pointYPos;
           ctx.beginPath();
           ctx.arc(pointX, pointY, c.pointSize / 2, 0, 2 * Math.PI);
-          ctx.fillStyle = 'black';
           ctx.fill();
         });
         // draw arrows
 
         relations.forEach((relation) => {
+          console.log(relation);
+          const [lx, ly, rx, ry] = [
+            relation.left.pointXPos,
+            relation.left.pointYPos,
+            relation.right.pointXPos,
+            relation.right.pointYPos,
+          ];
+          const [dx, dy] = [rx - lx, ry - ly];
+          const slope = Math.atan2(dy, dx);
+          const [sx, sy, ex, ey] = [
+            lx + c.pointMargin * Math.cos(slope),
+            ly + c.pointMargin * Math.sin(slope),
+            rx - c.pointMargin * Math.cos(slope),
+            ry - c.pointMargin * Math.sin(slope),
+          ];
+          ctx.beginPath();
+          ctx.moveTo(sx, sy);
+          ctx.lineTo(ex, ey);
+          ctx.lineTo(
+            ex - c.arrowHeadSize * Math.cos(slope + c.arrowHeadAngle),
+            ey - c.arrowHeadSize * Math.sin(slope + c.arrowHeadAngle)
+          );
+          ctx.lineTo(
+            ex - c.arrowHeadSize * Math.cos(slope - c.arrowHeadAngle),
+            ey - c.arrowHeadSize * Math.sin(slope - c.arrowHeadAngle)
+          );
+          ctx.lineTo(ex, ey);
+          ctx.stroke();
+          ctx.fill();
+
           ctx.beginPath();
         });
       });
     }, c.animationDuration * 1000);
-  }, [characters]);
+  }, [characters, relations]);
 
   return (
     <canvas

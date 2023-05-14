@@ -6,11 +6,12 @@ import QueryString from 'qs';
 import setPosition from '../utils/setPosition';
 import StylesWrapper from '../utils/StylesWrapper';
 
+import './../styles/Landing.css';
+
 import Main from '../components/main';
 import AddForm from '../components/AddForm';
 
 function Landing() {
-  import('./../styles/Landing.css');
   const location = useLocation();
 
   const [characters, setCharacters] = useState(

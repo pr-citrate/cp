@@ -4,11 +4,12 @@ import uuid from 'react-uuid';
 import setPosition from '../utils/setPosition';
 import StylesWrapper from '../utils/StylesWrapper';
 
+import './../styles/Test.css';
+
 import Main from '../components/main';
 import AddForm from '../components/AddForm';
 
 function Test() {
-  import('./../styles/Test.css');
   const [characters, setCharacters] = useState(
     setPosition([
       { id: uuid(), name: 'c1' },

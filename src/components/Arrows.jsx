@@ -27,6 +27,10 @@ function Arrows({ characters, setCharacters, relations }) {
           ctx.fill();
         });
         // draw arrows
+
+        relations.forEach((relation) => {
+          ctx.beginPath();
+        });
       });
     }, c.animationDuration * 1000);
   }, [characters]);

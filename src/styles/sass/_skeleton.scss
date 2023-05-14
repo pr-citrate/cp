@@ -105,3 +105,13 @@
   display: block;
   pointer-events: none;
 }
+
+.addForm {
+  @include flex;
+}
+
+.addInputField {
+  &:focus {
+    outline: none;
+  }
+}

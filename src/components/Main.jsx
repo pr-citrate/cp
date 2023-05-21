@@ -6,34 +6,41 @@ import setPosition from '../utils/setPosition';
 
 import Character from './Character';
 import Arrows from './Arrows';
+import { useEffect } from 'react';
 
 const MemoizedCharacter = memo(Character);
 
 function Main({ characters, setCharacters }) {
   const styles = useContext(stylesContext);
   const [relations, setRelations] = useState([
-    { left: characters[3].id, right: characters[7].id },
-    { left: characters[7].id, right: characters[3].id },
-    { left: characters[2].id, right: characters[5].id },
-    { left: characters[2].id, right: characters[5].id },
-    { left: characters[1].id, right: characters[6].id },
-    { left: characters[8].id, right: characters[2].id },
-    { left: characters[0].id, right: characters[3].id },
-    { left: characters[1].id, right: characters[2].id },
-    { left: characters[4].id, right: characters[2].id },
-    { left: characters[8].id, right: characters[5].id },
+    //   { left: characters[3].id, right: characters[7].id },
+    //   { left: characters[7].id, right: characters[3].id },
+    //   { left: characters[2].id, right: characters[5].id },
+    //   { left: characters[2].id, right: characters[5].id },
+    //   { left: characters[1].id, right: characters[6].id },
+    //   { left: characters[8].id, right: characters[2].id },
+    //   { left: characters[0].id, right: characters[3].id },
+    //   { left: characters[1].id, right: characters[2].id },
+    //   { left: characters[4].id, right: characters[2].id },
+    //   { left: characters[8].id, right: characters[5].id },
   ]);
   const [selection, setSelection] = useState('');
   const [pointCoordinate, setPointCoordinate] = useState([]);
 
   const handleDelete = (idk) => {
+    setCharacters(
+      setPosition(
+        characters.filter((character) => {
+          console.log(character);
+          return character.id !== idk;
+        })
+      )
+    );
+
     setRelations(
       relations.filter(
         (relation) => relation.left !== idk && relation.right !== idk
       )
-    );
-    setCharacters(
-      setPosition(characters.filter((character) => character.idk !== idk))
     );
   };
 

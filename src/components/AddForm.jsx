@@ -10,12 +10,12 @@ function AddForm({ setCharacters, updatePointsPositions }) {
 
   const handleAdd = () => {
     if (inputValue.trim() !== '') {
-      setCharacters((prevCharacters) => {
-        return setPosition([
+      setCharacters((prevCharacters) =>
+        setPosition([
           ...prevCharacters,
           { name: inputValue.trim(), id: uuid() },
-        ]);
-      });
+        ])
+      );
 
       setInputValue('');
     }

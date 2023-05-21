@@ -7,6 +7,9 @@ import { stylesContext } from '../utils/StylesWrapper';
 function Arrows({ characters, setCharacters, relations }) {
   const styles = useContext(stylesContext);
   const canvasRef = useRef(null);
+  const findCharacter = (id) => {
+    return characters.find((obj) => obj.id === id);
+  };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -32,12 +35,11 @@ function Arrows({ characters, setCharacters, relations }) {
         // draw arrows
 
         relations.forEach((relation) => {
-          console.log(relation);
           const [lx, ly, rx, ry] = [
-            relation.left.pointXPos,
-            relation.left.pointYPos,
-            relation.right.pointXPos,
-            relation.right.pointYPos,
+            findCharacter(relation.left).pointXPos,
+            findCharacter(relation.left).pointYPos,
+            findCharacter(relation.right).pointXPos,
+            findCharacter(relation.right).pointYPos,
           ];
           const [dx, dy] = [rx - lx, ry - ly];
           const slope = Math.atan2(dy, dx);
@@ -47,6 +49,7 @@ function Arrows({ characters, setCharacters, relations }) {
             rx - c.pointMargin * Math.cos(slope),
             ry - c.pointMargin * Math.sin(slope),
           ];
+
           ctx.beginPath();
           ctx.moveTo(sx, sy);
           ctx.lineTo(ex, ey);

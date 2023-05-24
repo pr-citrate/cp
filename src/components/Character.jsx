@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect, useContext } from 'react';
 
 import { stylesContext } from '../utils/StylesWrapper';
-
+import setPosition from '../utils/setPosition';
 function Character({
   characters,
+  setCharacters,
   id,
   handleDelete,
   relations,
@@ -20,16 +21,22 @@ function Character({
   const [showContext, setShowContext] = useState(false);
   const [onEdit, setOnEdit] = useState(false);
   const [onHighlight, setOnHighlight] = useState(false);
+  const [inputName, setInputName] = useState(character.name);
 
   const handleClick = () => {
-    if (selected === null) {
-      setSelected(character.id);
-    } else if (selected === character.id) {
-      setSelected(null);
-    } else {
-      setPrevRelationsLength(relations.length);
-      setRelations([...relations, { left: selected, right: character.id }]);
-      setSelected(null);
+    if (!onEdit) {
+      if (selected === null) {
+        // choosed as left
+        setSelected(character.id);
+      } else if (selected === character.id) {
+        // double click
+        setSelected(null);
+      } else {
+        // choosed as right
+        setPrevRelationsLength(relations.length);
+        setRelations([...relations, { left: selected, right: character.id }]);
+        setSelected(null);
+      }
     }
   };
 
@@ -43,6 +50,32 @@ function Character({
   const handleHighlight = () => {
     setOnHighlight(!onHighlight);
     setShowContext(false);
+  };
+  const handleNameChange = () => {
+    const idx = characters.findIndex((obj) => obj.id !== character.id);
+    let temp = characters;
+    // temp[idx]
+    if (inputName.trim() !== '') {
+      setCharacters(
+        setPosition(
+          characters.map((obj) =>
+            obj.id === character.id
+              ? { name: inputName, id: character.id }
+              : obj
+          )
+        )
+      );
+    }
+    setOnEdit(false);
+  };
+  const handleUpdate = (event) => {
+    setInputName(event.target.value);
+    console.log('handleupdate', inputName);
+  };
+  const handleEnter = (event) => {
+    if (event.key === 'Enter') {
+      handleNameChange();
+    }
   };
 
   useEffect(() => {
@@ -59,14 +92,13 @@ function Character({
         !buttonRef?.current.contains(event.target)
       ) {
         for (const btn of document.querySelectorAll('.character')) {
-          if (btn.contains(event.target)) return;
+          if (event.button === 0 && btn.contains(event.target)) return;
         }
         setSelected(null);
       }
     };
 
     document.addEventListener('mousedown', handleClickError);
-    inputRef.current.value = character.name;
 
     return () => {
       document.removeEventListener('mousedown', handleClickError);
@@ -100,6 +132,9 @@ function Character({
           style={styles.name}
           ref={inputRef}
           disabled={onEdit ? false : true}
+          onChange={handleUpdate}
+          onKeyDown={handleEnter}
+          value={inputName}
         ></input>
       </button>
       <div

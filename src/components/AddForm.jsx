@@ -4,17 +4,14 @@ import uuid from 'react-uuid';
 import setPosition from '../utils/setPosition';
 import { stylesContext } from '../utils/StylesWrapper';
 
-function AddForm({ setCharacters, updatePointsPositions }) {
+function AddForm({ characters, setCharacters, updatePointsPositions }) {
   const styles = useContext(stylesContext);
   const [inputValue, setInputValue] = useState('');
 
   const handleAdd = () => {
     if (inputValue.trim() !== '') {
-      setCharacters((prevCharacters) =>
-        setPosition([
-          ...prevCharacters,
-          { name: inputValue.trim(), id: uuid() },
-        ])
+      setCharacters(
+        setPosition([...characters, { name: inputValue.trim(), id: uuid() }])
       );
 
       setInputValue('');

@@ -52,7 +52,6 @@ function Main({ characters, setCharacters }) {
             setRelations={setRelations}
             selected={selected}
             setSelected={setSelected}
-            prevRelationsLength={prevRelationsLength}
             setPrevRelationsLength={setPrevRelationsLength}
           />
         ))}
@@ -61,6 +60,7 @@ function Main({ characters, setCharacters }) {
           setCharacters={setCharacters}
           relations={relations}
           prevRelationsLength={prevRelationsLength}
+          setPrevRelationsLength={setPrevRelationsLength}
         />
       </div>
       <div className={`footer`} style={styles.footer}>

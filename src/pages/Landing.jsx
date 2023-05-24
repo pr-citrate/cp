@@ -35,7 +35,7 @@ function Landing() {
       })}
     >
       <Main characters={characters} setCharacters={setCharacters} />
-      <AddForm setCharacters={setCharacters} />
+      <AddForm characters={characters} setCharacters={setCharacters} />
     </StylesWrapper>
   );
 }

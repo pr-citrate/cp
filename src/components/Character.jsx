@@ -10,7 +10,6 @@ function Character({
   setRelations,
   selected,
   setSelected,
-  prevRelationsLength,
   setPrevRelationsLength,
 }) {
   const styles = useContext(stylesContext);

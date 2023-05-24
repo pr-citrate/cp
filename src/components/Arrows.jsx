@@ -4,7 +4,13 @@ import c from './../constants/constants';
 
 import { stylesContext } from '../utils/StylesWrapper';
 
-function Arrows({ characters, setCharacters, relations, prevRelationsLength }) {
+function Arrows({
+  characters,
+  setCharacters,
+  relations,
+  prevRelationsLength,
+  setPrevRelationsLength,
+}) {
   const styles = useContext(stylesContext);
   const canvasRef = useRef(null);
   const findCharacter = (id) => {
@@ -44,10 +50,12 @@ function Arrows({ characters, setCharacters, relations, prevRelationsLength }) {
   };
 
   useEffect(() => {
+    console.log('useeffect repaint', prevRelationsLength, relations.length);
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     if (prevRelationsLength < relations.length) {
       drawArrow(ctx, relations[relations.length - 1]);
+      setPrevRelationsLength(relations.length);
     } else {
       // clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);

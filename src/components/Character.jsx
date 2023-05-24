@@ -47,21 +47,30 @@ function Character({
   };
 
   useEffect(() => {
-    const handleContextRemove = (event) => {
+    const handleClickError = (event) => {
       if (
         showContext &&
         (event.button === 0 || event.button === 2) &&
         !contextRef?.current.contains(event.target)
       ) {
         setShowContext(false);
+      } else if (
+        !showContext &&
+        (event.button === 0 || event.button === 2) &&
+        !buttonRef?.current.contains(event.target)
+      ) {
+        for (const btn of document.querySelectorAll('.character')) {
+          if (btn.contains(event.target)) return;
+        }
+        setSelected(null);
       }
     };
 
-    document.addEventListener('mousedown', handleContextRemove);
+    document.addEventListener('mousedown', handleClickError);
     inputRef.current.value = character.name;
 
     return () => {
-      document.removeEventListener('mousedown', handleContextRemove);
+      document.removeEventListener('mousedown', handleClickError);
     };
   });
 

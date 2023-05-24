@@ -25,6 +25,8 @@ function Character({
   const handleClick = () => {
     if (selected === null) {
       setSelected(character.id);
+    } else if (selected === character.id) {
+      setSelected(null);
     } else {
       setPrevRelationsLength(relations.length);
       setRelations([...relations, { left: selected, right: character.id }]);

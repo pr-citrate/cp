@@ -106,11 +106,11 @@
   pointer-events: none;
 }
 
-.addForm {
+.add-form {
   @include flex;
 }
 
-.addInputField {
+.add-input-field {
   &:focus {
     outline: none;
   }

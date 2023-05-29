@@ -34,7 +34,8 @@ function Character({
       } else {
         // choosed as right
         setPrevRelationsLength(relations.length);
-        setRelations([...relations, { left: selected, right: character.id }]);
+        const tmp = { left: selected, right: character.id };
+        setRelations(tmp in relations ? relations : [...relations, tmp]);
         setSelected(null);
       }
     }
@@ -70,7 +71,6 @@ function Character({
   };
   const handleUpdate = (event) => {
     setInputName(event.target.value);
-    console.log('handleupdate', inputName);
   };
   const handleEnter = (event) => {
     if (event.key === 'Enter') {

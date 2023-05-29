@@ -3,6 +3,7 @@ import { useEffect, useRef, useContext } from 'react';
 import c from './../constants/constants';
 
 import { stylesContext } from '../utils/StylesWrapper';
+import { useState } from 'react';
 
 function Arrows({
   characters,
@@ -13,6 +14,7 @@ function Arrows({
 }) {
   const styles = useContext(stylesContext);
   const canvasRef = useRef(null);
+  const [prevIDs, setPrevIDs] = useState([]);
   const findCharacter = (id) => {
     return characters.find((obj) => obj.id === id);
   };
@@ -50,10 +52,11 @@ function Arrows({
   };
 
   useEffect(() => {
-    console.log('useeffect repaint', prevRelationsLength, relations.length);
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-    if (prevRelationsLength < relations.length) {
+    const IDs = characters.map((obj) => obj.id);
+    console.log(IDs === prevIDs);
+    if (prevIDs === IDs && prevRelationsLength < relations.length) {
       drawArrow(ctx, relations[relations.length - 1]);
       setPrevRelationsLength(relations.length);
     } else {
@@ -81,6 +84,7 @@ function Arrows({
         });
       }, c.animationDuration * 1000);
     }
+    setPrevIDs(IDs);
   }, [characters, relations]);
 
   return (

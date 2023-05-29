@@ -29,9 +29,9 @@ function AddForm({ characters, setCharacters, updatePointsPositions }) {
   };
 
   return (
-    <div className='addForm'>
+    <div className='add-form'>
       <input
-        className='addInputField'
+        className='add-input-field'
         value={inputValue}
         onChange={handleInputOnChange}
         onKeyDown={handleInputKeyDown}

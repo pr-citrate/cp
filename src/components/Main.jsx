@@ -13,20 +13,20 @@ function Main({ characters, setCharacters }) {
   const styles = useContext(stylesContext);
   const [relations, setRelations] = useState([]);
   const [selected, setSelected] = useState(null);
-  const [prevRelationsLength, setPrevRelationsLength] = useState(0);
-  const handleDelete = (idk) => {
-    setPrevRelationsLength(relations.length);
+  const [prevRelationsSize, setPrevRelationsSize] = useState(0);
+  const handleDelete = (id) => {
+    setPrevRelationsSize(relations.length);
     setCharacters(
       setPosition(
         characters.filter((character) => {
-          return character.id !== idk;
+          return character.id !== id;
         })
       )
     );
 
     setRelations(
       relations.filter(
-        (relation) => relation.left !== idk && relation.right !== idk
+        (relation) => !relations.left === id || !relations.right === id
       )
     );
   };
@@ -52,15 +52,15 @@ function Main({ characters, setCharacters }) {
             setRelations={setRelations}
             selected={selected}
             setSelected={setSelected}
-            setPrevRelationsLength={setPrevRelationsLength}
+            setPrevRelationsSize={setPrevRelationsSize}
           />
         ))}
         <Arrows
           characters={characters}
           setCharacters={setCharacters}
           relations={relations}
-          prevRelationsLength={prevRelationsLength}
-          setPrevRelationsLength={setPrevRelationsLength}
+          prevRelationsSize={prevRelationsSize}
+          setPrevRelationsSize={setPrevRelationsSize}
         />
       </div>
       <div className={`footer`} style={styles.footer}>

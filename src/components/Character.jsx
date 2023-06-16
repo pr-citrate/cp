@@ -11,7 +11,7 @@ function Character({
   setRelations,
   selected,
   setSelected,
-  setPrevRelationsLength,
+  setPrevRelationsSize,
 }) {
   const styles = useContext(stylesContext);
   const character = characters.find((obj) => obj.id === id);
@@ -33,9 +33,20 @@ function Character({
         setSelected(null);
       } else {
         // choosed as right
-        setPrevRelationsLength(relations.length);
-        const tmp = { left: selected, right: character.id };
-        setRelations(tmp in relations ? relations : [...relations, tmp]);
+        setPrevRelationsSize(relations.length);
+        // [[ch1, ch2], [ch2, ch1]]
+        //
+        //
+        //
+        let tmp = [];
+        for (const i of tmp) {
+          for (const j of i) {
+            tmp+=;
+          }
+        }
+
+        console.log(tmp);
+        setRelations(tmp);
         setSelected(null);
       }
     }
@@ -53,9 +64,6 @@ function Character({
     setShowContext(false);
   };
   const handleNameChange = () => {
-    const idx = characters.findIndex((obj) => obj.id !== character.id);
-    let temp = characters;
-    // temp[idx]
     if (inputName.trim() !== '') {
       setCharacters(
         setPosition(

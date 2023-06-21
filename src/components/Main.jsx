@@ -13,9 +13,9 @@ function Main({ characters, setCharacters }) {
   const styles = useContext(stylesContext);
   const [relations, setRelations] = useState([]);
   const [selected, setSelected] = useState(null);
-  const [prevRelationsSize, setPrevRelationsSize] = useState(0);
+  const [isNameUpdated, setIsNameUpdated] = useState(false);
+  const [newRelation, setNewRelation] = useState(null);
   const handleDelete = (id) => {
-    setPrevRelationsSize(relations.length);
     setCharacters(
       setPosition(
         characters.filter((character) => {
@@ -52,15 +52,16 @@ function Main({ characters, setCharacters }) {
             setRelations={setRelations}
             selected={selected}
             setSelected={setSelected}
-            setPrevRelationsSize={setPrevRelationsSize}
+            newRelation={newRelation}
+            setNewRelation={setNewRelation}
           />
         ))}
         <Arrows
           characters={characters}
           setCharacters={setCharacters}
           relations={relations}
-          prevRelationsSize={prevRelationsSize}
-          setPrevRelationsSize={setPrevRelationsSize}
+          newRelation={newRelation}
+          setNewRelation={setNewRelation}
         />
       </div>
       <div className={`footer`} style={styles.footer}>

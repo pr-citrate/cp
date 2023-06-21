@@ -9,18 +9,16 @@ function Arrows({
   characters,
   setCharacters,
   relations,
-  prevRelationsSize,
-  setPrevRelationsSize,
+  newRelation,
+  setNewRelation,
 }) {
   const styles = useContext(stylesContext);
   const canvasRef = useRef(null);
-  const [prevIDs, setPrevIDs] = useState([]);
   const findCharacter = (id) => {
     return characters.find((obj) => obj.id === id);
   };
 
   const drawArrow = (ctx, relation) => {
-    console.log(relations);
     const [lx, ly, rx, ry] = [
       findCharacter(relation.left).pointXPos,
       findCharacter(relation.left).pointYPos,
@@ -55,10 +53,10 @@ function Arrows({
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-
-    if (prevRelationsSize < relations.size) {
-      drawArrow(ctx, relations[relations.size - 1]);
-      setPrevRelationsSize(relations.size);
+    console.log(newRelation);
+    if (newRelation) {
+      drawArrow(ctx, newRelation);
+      setNewRelation(null);
     } else {
       // clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -79,12 +77,14 @@ function Arrows({
           // draw arrows
 
           relations.forEach((relation) => {
-            drawArrow(ctx, relation);
+            relation.forEach((rel) => {
+              drawArrow(ctx, rel);
+            });
           });
         });
       }, c.animationDuration * 1000);
     }
-  }, [relations]);
+  }, [characters, JSON.stringify(relations)]);
 
   return (
     <canvas

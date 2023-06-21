@@ -11,7 +11,8 @@ function Character({
   setRelations,
   selected,
   setSelected,
-  setPrevRelationsSize,
+  newRelation,
+  setNewRelation,
 }) {
   const styles = useContext(stylesContext);
   const character = characters.find((obj) => obj.id === id);
@@ -33,20 +34,61 @@ function Character({
         setSelected(null);
       } else {
         // choosed as right
-        setPrevRelationsSize(relations.length);
-        // [[ch1, ch2], [ch2, ch1]]
-        //
-        //
-        //
-        let tmp = [];
-        for (const i of tmp) {
-          for (const j of i) {
-            tmp+=;
-          }
-        }
 
-        console.log(tmp);
-        setRelations(tmp);
+        // [
+        //   [{ left: 'ch1', right: 'ch2' },
+        //   { left: 'ch2', right: 'ch1' }],
+        //   [{ left: 'ch1', right: 'ch4' }]
+        // ]
+        // console.log(
+        //   relations.some((rels) => {
+        //     console.log(rels);
+        //     return rels.some(
+        //       (rel) => rel.left === selected && rel.right === character.id
+        //     );
+        //   })
+        // );
+        const addNewRelations = (relations, relation) => {
+          for (let i = 0; i < relations.length; i++) {
+            const rels = relations[i];
+            // having same characters
+            if (
+              rels.every(
+                (rel) =>
+                  (rel.left === relation.right &&
+                    rel.right === relation.left) ||
+                  (rel.right === relation.right && rel.left === relation.left)
+              )
+            ) {
+              if (
+                // not having relation
+                rels.every(
+                  (rel) =>
+                    rel.left !== relation.left && rel.right !== relation.right
+                )
+              ) {
+                relations[i] = [...relations[i], relation];
+                console.log('#', relations[i]);
+                setNewRelation(relation);
+                return relations;
+              } else {
+                // have same relation
+                setNewRelation(relation);
+                return relations;
+              }
+            }
+          }
+          //not in list
+          setNewRelation(relation);
+          return [...relations, [relation]];
+        };
+        console.log(
+          addNewRelations(relations, { left: selected, right: character.id })
+        );
+        setRelations(
+          addNewRelations(relations, { left: selected, right: character.id })
+        );
+
         setSelected(null);
       }
     }

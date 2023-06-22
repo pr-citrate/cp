@@ -11,8 +11,6 @@ function Character({
   setRelations,
   selected,
   setSelected,
-  newRelation,
-  setNewRelation,
 }) {
   const styles = useContext(stylesContext);
   const character = characters.find((obj) => obj.id === id);
@@ -69,22 +67,16 @@ function Character({
               ) {
                 relations[i] = [...relations[i], relation];
                 console.log('#', relations[i]);
-                setNewRelation(relation);
                 return relations;
               } else {
                 // have same relation
-                setNewRelation(relation);
                 return relations;
               }
             }
           }
           //not in list
-          setNewRelation(relation);
           return [...relations, [relation]];
         };
-        console.log(
-          addNewRelations(relations, { left: selected, right: character.id })
-        );
         setRelations(
           addNewRelations(relations, { left: selected, right: character.id })
         );

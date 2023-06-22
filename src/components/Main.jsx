@@ -14,7 +14,6 @@ function Main({ characters, setCharacters }) {
   const [relations, setRelations] = useState([]);
   const [selected, setSelected] = useState(null);
   const [isNameUpdated, setIsNameUpdated] = useState(false);
-  const [newRelation, setNewRelation] = useState(null);
   const handleDelete = (id) => {
     setCharacters(
       setPosition(
@@ -52,16 +51,12 @@ function Main({ characters, setCharacters }) {
             setRelations={setRelations}
             selected={selected}
             setSelected={setSelected}
-            newRelation={newRelation}
-            setNewRelation={setNewRelation}
           />
         ))}
         <Arrows
           characters={characters}
           setCharacters={setCharacters}
           relations={relations}
-          newRelation={newRelation}
-          setNewRelation={setNewRelation}
         />
       </div>
       <div className={`footer`} style={styles.footer}>

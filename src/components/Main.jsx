@@ -10,10 +10,10 @@ import Arrows from './Arrows';
 const MemoizedCharacter = memo(Character);
 
 function Main({ characters, setCharacters }) {
-  const styles = useContext(stylesContext);
+  const [isNameUpdated, setIsNameUpdated] = useState(false);
   const [relations, setRelations] = useState([]);
   const [selected, setSelected] = useState(null);
-  const [isNameUpdated, setIsNameUpdated] = useState(false);
+  const styles = useContext(stylesContext);
   const handleDelete = (id) => {
     setCharacters(
       setPosition(
@@ -42,21 +42,21 @@ function Main({ characters, setCharacters }) {
       >
         {characters.map((character) => (
           <MemoizedCharacter
-            key={character.id}
-            id={character.id}
             characters={characters}
-            setCharacters={setCharacters}
             handleDelete={handleDelete}
+            id={character.id}
+            key={character.id}
             relations={relations}
-            setRelations={setRelations}
             selected={selected}
+            setCharacters={setCharacters}
+            setRelations={setRelations}
             setSelected={setSelected}
           />
         ))}
         <Arrows
           characters={characters}
-          setCharacters={setCharacters}
           relations={relations}
+          setCharacters={setCharacters}
         />
       </div>
       <div className={`footer`} style={styles.footer}>

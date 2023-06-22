@@ -4,12 +4,12 @@ import { stylesContext } from '../utils/StylesWrapper';
 import setPosition from '../utils/setPosition';
 function Character({
   characters,
-  setCharacters,
-  id,
   handleDelete,
+  id,
   relations,
-  setRelations,
   selected,
+  setCharacters,
+  setRelations,
   setSelected,
 }) {
   const styles = useContext(stylesContext);

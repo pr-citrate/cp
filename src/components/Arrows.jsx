@@ -14,7 +14,6 @@ function Arrows({ characters, setCharacters, relations }) {
 
   const drawArrows = (ctx, relation) => {
     const drawBody = (ctx, relation) => {
-      console.log(relation);
       const [lx, ly, rx, ry] = [
         findCharacter(relation.left).pointXPos,
         findCharacter(relation.left).pointYPos,
@@ -65,14 +64,12 @@ function Arrows({ characters, setCharacters, relations }) {
       ctx.stroke();
       ctx.fill();
     };
-    {
-      drawBody(ctx, relation[0]);
-    }
-    {
-      relation.forEach((rel) => {
-        drawHead(ctx, rel);
-      });
-    }
+
+    drawBody(ctx, relation[0]);
+
+    relation.forEach((rel) => {
+      drawHead(ctx, rel);
+    });
   };
 
   useEffect(() => {
@@ -101,7 +98,7 @@ function Arrows({ characters, setCharacters, relations }) {
       });
     }, c.animationDuration * 1000);
     // }
-  }, [characters, JSON.stringify(relations)]);
+  }, [characters.length, JSON.stringify(relations)]);
 
   return (
     <canvas

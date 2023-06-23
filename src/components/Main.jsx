@@ -1,16 +1,13 @@
-import { memo, useState, useContext } from 'react';
-import { stylesContext } from '../utils/StylesWrapper';
-
+import { memo, useContext, useState } from 'react';
 import preventRightClick from '../utils/preventRightClick';
 import setPosition from '../utils/setPosition';
-
-import Character from './Character';
+import { stylesContext } from '../utils/StylesWrapper';
 import Arrows from './Arrows';
+import Character from './Character';
 
 const MemoizedCharacter = memo(Character);
 
 function Main({ characters, setCharacters }) {
-  const [isNameUpdated, setIsNameUpdated] = useState(false);
   const [relations, setRelations] = useState([]);
   const [selected, setSelected] = useState(null);
   const styles = useContext(stylesContext);
@@ -22,10 +19,16 @@ function Main({ characters, setCharacters }) {
         })
       )
     );
+    console.log(
+      'debug',
+      relations.filter((rels) =>
+        rels.some((rel) => rel.left !== id && rel.right !== id)
+      )
+    );
 
     setRelations(
-      relations.filter(
-        (relation) => !relations.left === id || !relations.right === id
+      relations.filter((rels) =>
+        rels.some((rel) => rel.left !== id && rel.right !== id)
       )
     );
   };

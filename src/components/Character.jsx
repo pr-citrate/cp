@@ -66,10 +66,21 @@ function Character({
                 )
               ) {
                 relations[i] = [...relations[i], relation];
-                console.log('#', relations[i]);
                 return relations;
               } else {
-                // have same relation
+                // have exactly same relation
+                // delete relation
+                if (relations[i].length === 2) {
+                  relations[i] = relations[i].filter(
+                    (rel) =>
+                      !(
+                        rel.left === relation.left &&
+                        rel.right === relation.right
+                      )
+                  );
+                } else {
+                  relations.splice(i, 1);
+                }
                 return relations;
               }
             }

@@ -37,6 +37,7 @@
   height: $character-height;
   border-radius: 50%;
   border: none;
+  overflow: visible;
   transition: top $animation-duration ease, left $animation-duration ease;
   &:focus-visible {
     outline: none;
@@ -70,7 +71,7 @@
 }
 
 .name {
-  max-width: 100%;
+  min-width: 100%;
   border: none;
   user-select: none;
   text-align: center;
@@ -117,5 +118,5 @@
 }
 
 .selected {
-  background-color: grey;
+  background-color: gray;
 }

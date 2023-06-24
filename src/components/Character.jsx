@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect, useContext } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 
-import { stylesContext } from '../utils/StylesWrapper';
 import setPosition from '../utils/setPosition';
+import { stylesContext } from '../utils/StylesWrapper';
 function Character({
   characters,
   handleDelete,
@@ -70,7 +70,9 @@ function Character({
               } else {
                 // have exactly same relation
                 // delete relation
-                if (relations[i].length === 2) {
+                if (relations[i].length === 1) {
+                  relations.splice(i, 1);
+                } else {
                   relations[i] = relations[i].filter(
                     (rel) =>
                       !(
@@ -78,8 +80,6 @@ function Character({
                         rel.right === relation.right
                       )
                   );
-                } else {
-                  relations.splice(i, 1);
                 }
                 return relations;
               }
@@ -102,7 +102,7 @@ function Character({
     setShowContext(false);
     setTimeout(() => {
       inputRef.current.focus();
-    }, 50);
+    }, 0);
   };
   const handleHighlight = () => {
     setOnHighlight(!onHighlight);
@@ -148,6 +148,7 @@ function Character({
           if (event.button === 0 && btn.contains(event.target)) return;
         }
         setSelected(null);
+        setOnEdit(false);
       }
     };
 
@@ -181,12 +182,12 @@ function Character({
         onClick={handleClick}
       >
         <input
-          className={`name`}
-          style={styles.name}
-          ref={inputRef}
+          className={`name ${selected === character.id ? 'selected' : ''}`}
           disabled={onEdit ? false : true}
           onChange={handleUpdate}
           onKeyDown={handleEnter}
+          ref={inputRef}
+          style={styles.name}
           value={inputName}
         ></input>
       </button>
@@ -199,23 +200,23 @@ function Character({
         }}
       >
         <button
-          style={styles.contextMenu}
           className={`context-menu`}
           onClick={() => handleDelete(character.id)}
+          style={styles.contextMenu}
         >
           delete
         </button>
         <button
           className={`context-menu`}
-          style={styles.contextMenu}
           onClick={handleHighlight}
+          style={styles.contextMenu}
         >
           {onHighlight ? 'cancel highlighting' : 'highlight'}
         </button>
         <button
           className={`context-menu`}
-          style={styles.contextMenu}
           onClick={handleEdit}
+          style={styles.contextMenu}
         >
           edit
         </button>

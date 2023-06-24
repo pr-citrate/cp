@@ -7,6 +7,10 @@
   align-items: center;
 }
 
+:root {
+  user-select: none;
+}
+
 %side {
   width: calc(($img-width - $img-height) / 2);
 }
@@ -71,11 +75,9 @@
 }
 
 .name {
-  min-width: 100%;
   border: none;
-  user-select: none;
   text-align: center;
-  background-color: inherit;
+  background-color: transparent;
   &:focus {
     outline: none;
   }

@@ -101,7 +101,7 @@ function Character({
     setOnEdit(true);
     setShowContext(false);
     setTimeout(() => {
-      inputRef.current.focus();
+      inputRef.current.select();
     }, 0);
   };
   const handleHighlight = () => {
@@ -182,7 +182,7 @@ function Character({
         onClick={handleClick}
       >
         <input
-          className={`name ${selected === character.id ? 'selected' : ''}`}
+          className={`name`}
           disabled={onEdit ? false : true}
           onChange={handleUpdate}
           onKeyDown={handleEnter}

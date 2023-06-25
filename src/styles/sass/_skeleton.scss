@@ -18,6 +18,7 @@
 .container {
   width: $img-width;
   height: $img-height;
+  background-color: white;
   @include flex(row);
 }
 
@@ -77,6 +78,7 @@
 .name {
   border: none;
   text-align: center;
+  pointer-events: none;
   background-color: transparent;
   &:focus {
     outline: none;

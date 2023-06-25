@@ -10,6 +10,7 @@ import './../styles/Landing.css';
 
 import Main from '../components/main';
 import AddForm from '../components/AddForm';
+import CaptureButton from '../components/CaptureButton';
 
 function Landing() {
   const location = useLocation();
@@ -29,14 +30,17 @@ function Landing() {
   );
 
   return (
-    <StylesWrapper
-      styles={QueryString.parse(location.search, {
-        ignoreQueryPrefix: true,
-      })}
-    >
-      <Main characters={characters} setCharacters={setCharacters} />
+    <>
+      <StylesWrapper
+        styles={QueryString.parse(location.search, {
+          ignoreQueryPrefix: true,
+        })}
+      >
+        <Main characters={characters} setCharacters={setCharacters} />
+      </StylesWrapper>
       <AddForm characters={characters} setCharacters={setCharacters} />
-    </StylesWrapper>
+      <CaptureButton />
+    </>
   );
 }
 export default Landing;

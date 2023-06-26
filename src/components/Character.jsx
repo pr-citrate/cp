@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 
 import setPosition from '../utils/setPosition';
-import { stylesContext } from '../utils/StylesWrapper';
+import { designContext } from '../utils/DesignWrapper';
 function Character({
   characters,
   handleDelete,
@@ -12,7 +12,7 @@ function Character({
   setRelations,
   setSelected,
 }) {
-  const styles = useContext(stylesContext);
+  const [design, _] = useContext(designContext);
   const character = characters.find((obj) => obj.id === id);
   const contextRef = useRef(null);
   const inputRef = useRef(null);
@@ -177,7 +177,7 @@ function Character({
         style={{
           top: character.yPos + 'px',
           left: character.xPos + 'px',
-          ...styles.character,
+          ...{ ...design?.character },
         }}
         onClick={handleClick}
       >
@@ -187,7 +187,7 @@ function Character({
           onChange={handleUpdate}
           onKeyDown={handleEnter}
           ref={inputRef}
-          style={styles.name}
+          style={design?.name}
           value={inputName}
         ></input>
       </button>
@@ -196,27 +196,27 @@ function Character({
         ref={contextRef}
         style={{
           display: showContext ? 'flex' : 'none',
-          ...styles.contextMenuContainer,
+          ...{ ...design?.contextMenuContainer },
         }}
       >
         <button
           className={`context-menu`}
           onClick={() => handleDelete(character.id)}
-          style={styles.contextMenu}
+          style={design?.contextMenu}
         >
           delete
         </button>
         <button
           className={`context-menu`}
           onClick={handleHighlight}
-          style={styles.contextMenu}
+          style={design?.contextMenu}
         >
           {onHighlight ? 'cancel highlighting' : 'highlight'}
         </button>
         <button
           className={`context-menu`}
           onClick={handleEdit}
-          style={styles.contextMenu}
+          style={design?.contextMenu}
         >
           edit
         </button>

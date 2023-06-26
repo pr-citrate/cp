@@ -1,7 +1,7 @@
 import { memo, useContext, useState } from 'react';
 import preventRightClick from '../utils/preventRightClick';
 import setPosition from '../utils/setPosition';
-import { stylesContext } from '../utils/StylesWrapper';
+import { designContext } from '../utils/DesignWrapper';
 import Arrows from './Arrows';
 import Character from './Character';
 
@@ -10,7 +10,7 @@ const MemoizedCharacter = memo(Character);
 function Main({ characters, setCharacters }) {
   const [relations, setRelations] = useState([]);
   const [selected, setSelected] = useState(null);
-  const styles = useContext(stylesContext);
+  const [design, _] = useContext(designContext);
   const handleDelete = (id) => {
     setCharacters(
       setPosition(
@@ -33,14 +33,15 @@ function Main({ characters, setCharacters }) {
     );
   };
 
+  console.log(design);
   return (
-    <div className={`container`} style={styles.container}>
-      <div className={`header`} style={styles.header}>
+    <div className={`container`} style={design?.container}>
+      <div className={`header`} style={design?.header}>
         header
       </div>
       <div
         className={`main`}
-        style={styles.main}
+        style={design?.main}
         onContextMenu={preventRightClick}
       >
         {characters.map((character) => (
@@ -62,7 +63,7 @@ function Main({ characters, setCharacters }) {
           setCharacters={setCharacters}
         />
       </div>
-      <div className={`footer`} style={styles.footer}>
+      <div className={`footer`} style={design?.footer}>
         footer
       </div>
     </div>

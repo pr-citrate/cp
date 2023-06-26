@@ -2,10 +2,8 @@ import { useState, useContext } from 'react';
 import uuid from 'react-uuid';
 
 import setPosition from '../utils/setPosition';
-import { stylesContext } from '../utils/StylesWrapper';
 
 function AddForm({ characters, setCharacters, updatePointsPositions }) {
-  const styles = useContext(stylesContext);
   const [inputValue, setInputValue] = useState('');
 
   const handleAdd = () => {

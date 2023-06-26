@@ -1,15 +1,14 @@
 import c from './../constants/constants';
-import { drawBody, drawDots, drawHead } from '../utils/Drawing';
-import { stylesContext } from '../utils/StylesWrapper';
+import { drawBody, drawDots, drawHead } from '../utils/drawing';
+import { designContext } from '../utils/DesignWrapper';
 import { useEffect, useRef, useContext } from 'react';
 
 function Arrows({ characters, setCharacters, relations }) {
-  const styles = useContext(stylesContext);
+  const [design, _] = useContext(designContext);
   const canvasRef = useRef(null);
 
   const drawArrows = (ctx, relation) => {
     drawBody(ctx, relation[0], characters);
-
     relation.forEach((rel) => {
       drawHead(ctx, rel, characters);
     });
@@ -30,7 +29,6 @@ function Arrows({ characters, setCharacters, relations }) {
           drawDots(ctx, character.pointXPos, character.pointYPos);
         });
         // draw arrows
-
         relations.forEach((relation) => {
           drawArrows(ctx, relation);
         });
@@ -43,7 +41,7 @@ function Arrows({ characters, setCharacters, relations }) {
     <canvas
       ref={canvasRef}
       className={`canvas`}
-      style={styles.canvas}
+      style={design?.canvas}
       width={c.imgWidth}
       height={c.imgHeight}
     ></canvas>

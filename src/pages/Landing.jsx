@@ -4,16 +4,20 @@ import { useLocation } from 'react-router-dom';
 import QueryString from 'qs';
 
 import setPosition from '../utils/setPosition';
-import StylesWrapper from '../utils/StylesWrapper';
+import DesignWrapper from '../utils/DesignWrapper';
 
 import './../styles/Landing.css';
 
 import Main from '../components/main';
 import AddForm from '../components/AddForm';
 import CaptureButton from '../components/CaptureButton';
+import DesignForm from '../components/DesignForm';
 
 function Landing() {
   const location = useLocation();
+  const queryString = QueryString.parse(location.search, {
+    ignoreQueryPrefix: true,
+  });
 
   const [characters, setCharacters] = useState(
     setPosition([
@@ -29,15 +33,15 @@ function Landing() {
     ])
   );
 
+  console.log(QueryString.stringify({ design: { name: { color: 'red' } } }));
+  console.log('qs', queryString.design);
+  // /?design%5Bname%5D%5Bcolor%5D=red
   return (
     <>
-      <StylesWrapper
-        styles={QueryString.parse(location.search, {
-          ignoreQueryPrefix: true,
-        })}
-      >
+      <DesignWrapper design={queryString.design}>
+        <DesignForm />
         <Main characters={characters} setCharacters={setCharacters} />
-      </StylesWrapper>
+      </DesignWrapper>
       <AddForm characters={characters} setCharacters={setCharacters} />
       <CaptureButton />
     </>

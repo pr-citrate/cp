@@ -35,9 +35,7 @@ const drawHead = (ctx, relation, characters) => {
   ];
   const [dx, dy] = [rx - lx, ry - ly];
   const slope = Math.atan2(dy, dx);
-  const [sx, sy, ex, ey] = [
-    lx + c.pointMargin * Math.cos(slope),
-    ly + c.pointMargin * Math.sin(slope),
+  const [ex, ey] = [
     rx - c.pointMargin * Math.cos(slope),
     ry - c.pointMargin * Math.sin(slope),
   ];

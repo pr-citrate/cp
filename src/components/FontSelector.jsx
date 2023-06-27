@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 import uuid from 'react-uuid';
-function FontSelector({ children }) {
+function FontSelector({ children, register }) {
   const GOOGLE_FONT_API = import.meta.env.VITE_APP_GOOGLE_FONT_API_KEY;
   const fetchGoogleFont = () => {
     return fetch(
@@ -40,11 +40,17 @@ function FontSelector({ children }) {
 
     default:
       return (
-        <ul>
+        <select name='font' {...register}>
           {data.items.map((datum) => (
-            <li key={uuid()}>{datum.family}</li>
+            <option
+              key={uuid()}
+              value={datum.family}
+              style={{ fontFamily: datum.family }}
+            >
+              {datum.family}
+            </option>
           ))}
-        </ul>
+        </select>
       );
   }
 }

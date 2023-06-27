@@ -13,7 +13,7 @@ function DesignForm() {
     register,
     handleSubmit,
     formState: { isSubmitting },
-  } = useForm({ mode: 'onBlur' });
+  } = useForm({ mode: 'onChange' });
   return (
     <>
       <form
@@ -37,8 +37,8 @@ function DesignForm() {
             {...register('title.color')}
           ></input>
           <label>font</label>
-          <input type='text' {...register('title.font')}></input>
-          <FontSelector />
+          {/* <input type='text' {...register('title.font')}></input> */}
+          <FontSelector register={register('title.font')} />
           <p style={{ fontFamily: design?.title?.font }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
             ipsum cumque non numquam blanditiis amet libero delectus. Maxime,

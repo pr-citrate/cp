@@ -2,6 +2,8 @@ import React from 'react';
 import { designContext } from '../utils/DesignWrapper';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { configDotenv } from 'dotenv';
+import FontSelector from './FontSelector';
 
 function DesignForm() {
   const handleFont = (event) => {
@@ -22,7 +24,7 @@ function DesignForm() {
       <form
         onSubmit={handleSubmit((data) => {
           console.log(data);
-          setStyle(data);
+          setDesign(data);
         })}
       >
         <fieldset>
@@ -45,12 +47,13 @@ function DesignForm() {
             onInput={handleFont}
             {...register('title.font')}
           ></input>
-          {/* <p style={{ fontFamily: design.title.font }}>
+          <FontSelector />
+          <p style={{ fontFamily: design?.title?.font }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
             ipsum cumque non numquam blanditiis amet libero delectus. Maxime,
             fugit architecto ipsam quae consectetur officia a voluptatem omnis,
             laborum quo amet!
-          </p> */}
+          </p>
         </fieldset>
         <button type='submit' disabled={isSubmitting}>
           apply

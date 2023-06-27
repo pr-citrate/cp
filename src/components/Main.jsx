@@ -33,7 +33,6 @@ function Main({ characters, setCharacters }) {
     );
   };
 
-  console.log(design);
   return (
     <div className={`container`} style={design?.container}>
       <div className={`header`} style={design?.header}>

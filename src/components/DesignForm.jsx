@@ -6,12 +6,7 @@ import { configDotenv } from 'dotenv';
 import FontSelector from './FontSelector';
 
 function DesignForm() {
-  const handleFont = (event) => {
-    const link = document.createElement('link');
-    link.href = event.value;
-    link.rel = 'stylesheet';
-    document.body.appendChild(link);
-  };
+  const handleFont = (event) => {};
 
   const [design, setDesign] = useContext(designContext);
   const {
@@ -42,11 +37,7 @@ function DesignForm() {
             {...register('title.color')}
           ></input>
           <label>font</label>
-          <input
-            type='text'
-            onInput={handleFont}
-            {...register('title.font')}
-          ></input>
+          <input type='text' {...register('title.font')}></input>
           <FontSelector />
           <p style={{ fontFamily: design?.title?.font }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate

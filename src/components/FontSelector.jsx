@@ -1,9 +1,5 @@
-import { useState } from 'react';
 import { useQuery } from 'react-query';
-const preLink = document.createElement('script');
-preLink.rel = 'preconnect';
-preLink.href = 'https://fonts.gstatic.com';
-document.head.appendChild(preLink);
+import uuid from 'react-uuid';
 function FontSelector({ children }) {
   const GOOGLE_FONT_API = import.meta.env.VITE_APP_GOOGLE_FONT_API_KEY;
   const fetchGoogleFont = () => {
@@ -23,7 +19,8 @@ function FontSelector({ children }) {
       console.log('#####', data.items);
       data.items.forEach((datum) => {
         const link = document.createElement('link');
-        link.href = datum.files.regular;
+        link.rel = 'stylesheet';
+        link.href = `https://fonts.googleapis.com/css?family=${datum.family}&display=swap&subset=korean`;
         document.head.appendChild(link);
       });
     },
@@ -43,12 +40,11 @@ function FontSelector({ children }) {
 
     default:
       return (
-        <p>{JSON.stringify(data)}</p>
-        // <ul>
-        //   {data.map((todo) => (
-        //     <li key={todo.id}>{todo.title}</li>
-        //   ))}
-        // </ul>
+        <ul>
+          {data.items.map((datum) => (
+            <li key={uuid()}>{datum.family}</li>
+          ))}
+        </ul>
       );
   }
 }

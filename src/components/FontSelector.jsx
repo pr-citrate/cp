@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { useQuery } from 'react-query';
-// const script = document.createElement('script');
-// script.src = 'https://apis.google.com/js/api.js';
-// document.head.appendChild(script);
+const preLink = document.createElement('script');
+preLink.rel = 'preconnect';
+preLink.href = 'https://fonts.gstatic.com';
+document.head.appendChild(preLink);
 function FontSelector({ children }) {
   const GOOGLE_FONT_API = import.meta.env.VITE_APP_GOOGLE_FONT_API_KEY;
   const fetchGoogleFont = () => {
     return fetch(
-      `https://www.googleapis.com/webfonts/v1/webfonts?key=${GOOGLE_FONT_API}`
+      `https://www.googleapis.com/webfonts/v1/webfonts?key=${GOOGLE_FONT_API}&subset=korean`
     )
       .then((res) => res.json())
 
@@ -19,7 +20,12 @@ function FontSelector({ children }) {
     retry: 0, // 실패시 재호출 몇번 할지
     onSuccess: (data) => {
       // 성공시 호출
-      console.log('#####', data);
+      console.log('#####', data.items);
+      data.items.forEach((datum) => {
+        const link = document.createElement('link');
+        link.href = datum.files.regular;
+        document.head.appendChild(link);
+      });
     },
     onError: (e) => {
       // 실패시 호출 (401, 404 같은 error가 아니라 정말 api 호출이 실패한 경우만 호출됩니다.)
@@ -37,7 +43,7 @@ function FontSelector({ children }) {
 
     default:
       return (
-        <p>{data}</p>
+        <p>{JSON.stringify(data)}</p>
         // <ul>
         //   {data.map((todo) => (
         //     <li key={todo.id}>{todo.title}</li>

@@ -10,7 +10,7 @@ const MemoizedCharacter = memo(Character);
 function Main({ characters, setCharacters }) {
   const [relations, setRelations] = useState([]);
   const [selected, setSelected] = useState(null);
-  const [design, _] = useContext(designContext);
+  const design = useContext(designContext);
   const handleDelete = (id) => {
     setCharacters(
       setPosition(
@@ -36,7 +36,16 @@ function Main({ characters, setCharacters }) {
   return (
     <div className={`container`} style={design?.container}>
       <div className={`header`} style={design?.header}>
-        header
+        <h2
+          className='title'
+          style={{
+            fontFamily: design?.title?.font,
+            color: design?.title?.color,
+          }}
+        >
+          {design?.title?.text}
+        </h2>
+        <h3 className='subtitle'>subtitle</h3>
       </div>
       <div
         className={`main`}
@@ -63,7 +72,7 @@ function Main({ characters, setCharacters }) {
         />
       </div>
       <div className={`footer`} style={design?.footer}>
-        footer
+        <h6 className='dev'>@k_plks</h6>
       </div>
     </div>
   );

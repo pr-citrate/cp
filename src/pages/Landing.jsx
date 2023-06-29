@@ -13,8 +13,8 @@ import AddForm from '../components/AddForm';
 import CaptureButton from '../components/CaptureButton';
 import DesignForm from '../components/DesignForm';
 
+import { memo } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
 
 const queryClient = new QueryClient();
 
@@ -43,10 +43,11 @@ function Landing() {
   // /?design%5Bname%5D%5Bcolor%5D=red
   return (
     <QueryClientProvider client={queryClient}>
-      <DesignWrapper design={queryString.design}>
-        <DesignForm />
-        <Main characters={characters} setCharacters={setCharacters} />
-      </DesignWrapper>
+      <DesignForm
+        userDesign={{ ...queryString.design }}
+        characters={characters}
+        setCharacters={setCharacters}
+      />
       <AddForm characters={characters} setCharacters={setCharacters} />
       <CaptureButton />
     </QueryClientProvider>

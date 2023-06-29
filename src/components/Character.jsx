@@ -12,7 +12,7 @@ function Character({
   setRelations,
   setSelected,
 }) {
-  const [design, _] = useContext(designContext);
+  const design = useContext(designContext);
   const character = characters.find((obj) => obj.id === id);
   const contextRef = useRef(null);
   const inputRef = useRef(null);

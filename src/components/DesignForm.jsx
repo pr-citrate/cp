@@ -1,27 +1,22 @@
-import React from 'react';
+import { useState, useContext } from 'react';
 import { designContext } from '../utils/DesignWrapper';
-import { useContext } from 'react';
-import { useForm } from 'react-hook-form';
-import { configDotenv } from 'dotenv';
 import FontSelector from './FontSelector';
+import DesignWrapper from '../utils/DesignWrapper';
+import { useForm } from 'react-hook-form';
+import { useEffect } from 'react';
+import Main from './main';
 
-function DesignForm() {
-  const handleFont = (event) => {};
+function DesignForm({ userDesign, characters, setCharacters }) {
+  const [design, setDesign] = useState({});
+  const { register, watch } = useForm({
+    defaultValues: userDesign,
+  });
+  console.log(watch());
+  useEffect(() => setDesign(watch()), []);
 
-  const [design, setDesign] = useContext(designContext);
-  const {
-    register,
-    handleSubmit,
-    formState: { isSubmitting },
-  } = useForm({ mode: 'onChange' });
   return (
-    <>
-      <form
-        onSubmit={handleSubmit((data) => {
-          console.log(data);
-          setDesign(data);
-        })}
-      >
+    <DesignWrapper design={design}>
+      <form onSubmit={(e) => e.preventDefault()}>
         <fieldset>
           <legend>Title</legend>
           <label>Title</label>
@@ -39,18 +34,24 @@ function DesignForm() {
           <label>font</label>
           {/* <input type='text' {...register('title.font')}></input> */}
           <FontSelector register={register('title.font')} />
-          <p style={{ fontFamily: design?.title?.font }}>
+          <p
+            style={{
+              fontFamily: design?.title?.font,
+              color: design?.title?.color,
+            }}
+          >
+            {design?.title?.text}
+            <br />
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
             ipsum cumque non numquam blanditiis amet libero delectus. Maxime,
             fugit architecto ipsam quae consectetur officia a voluptatem omnis,
             laborum quo amet!
           </p>
         </fieldset>
-        <button type='submit' disabled={isSubmitting}>
-          apply
-        </button>
+        <button type='submit'>apply</button>
       </form>
-    </>
+      <Main characters={characters} setCharacters={setCharacters} />
+    </DesignWrapper>
   );
 }
 

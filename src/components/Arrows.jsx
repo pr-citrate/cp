@@ -4,7 +4,7 @@ import { designContext } from '../utils/DesignWrapper';
 import { useEffect, useRef, useContext } from 'react';
 
 function Arrows({ characters, setCharacters, relations }) {
-  const [design, _] = useContext(designContext);
+  const design = useContext(designContext);
   const canvasRef = useRef(null);
 
   const drawArrows = (ctx, relation) => {

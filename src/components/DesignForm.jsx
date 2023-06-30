@@ -3,16 +3,17 @@ import { designContext } from '../utils/DesignWrapper';
 import FontSelector from './FontSelector';
 import DesignWrapper from '../utils/DesignWrapper';
 import { useForm } from 'react-hook-form';
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import Main from './main';
+import { useEffect } from 'react';
 
 function DesignForm({ userDesign, characters, setCharacters }) {
   const [design, setDesign] = useState({});
-  const { register, watch } = useForm({
+  const { register, watch, trigger } = useForm({
     defaultValues: userDesign,
   });
   console.log(watch());
-  useEffect(() => setDesign(watch()), []);
+  useLayoutEffect(() => setDesign(watch()), []);
 
   return (
     <DesignWrapper design={design}>
@@ -32,7 +33,6 @@ function DesignForm({ userDesign, characters, setCharacters }) {
             {...register('title.color')}
           ></input>
           <label>font</label>
-          {/* <input type='text' {...register('title.font')}></input> */}
           <FontSelector register={register('title.font')} />
           <p
             style={{

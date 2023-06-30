@@ -1,9 +1,10 @@
+import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import uuid from 'react-uuid';
 
 function FontSelector({ register }) {
   const GOOGLE_FONT_API = import.meta.env.VITE_APP_GOOGLE_FONT_API_KEY;
-
+  const [selectedFont, setSelectedFont] = useState('Arial');
   const fetchGoogleFont = async () => {
     const response = await fetch(
       `https://www.googleapis.com/webfonts/v1/webfonts?key=${GOOGLE_FONT_API}&subset=korean`
@@ -43,23 +44,30 @@ function FontSelector({ register }) {
   }
 
   return (
-    <select defaultValue='Arial' {...register}>
+    <select
+      {...register}
+      onChange={(e) => {
+        register.onChange(e);
+        setSelectedFont(e.target.value);
+      }}
+      value={selectedFont}
+    >
       <option key={uuid()} style={{ fontFamily: 'Arial' }} value='Arial'>
+        {data.items.map(
+          (datum) =>
+            (datum.variants.includes('regular') ||
+              datum.variants.includes('500')) && (
+              <option
+                key={uuid()}
+                value={datum.family}
+                style={{ fontFamily: datum.family }}
+              >
+                {datum.family}
+              </option>
+            )
+        )}
         Arial
       </option>
-      {data.items.map(
-        (datum) =>
-          (datum.variants.includes('regular') ||
-            datum.variants.includes('500')) && (
-            <option
-              key={uuid()}
-              value={datum.family}
-              style={{ fontFamily: datum.family }}
-            >
-              {datum.family}
-            </option>
-          )
-      )}
     </select>
   );
 }

@@ -45,7 +45,15 @@ function Main({ characters, setCharacters }) {
         >
           {design?.title?.text}
         </h2>
-        <h3 className='subtitle'>subtitle</h3>
+        <h3
+          className='subtitle'
+          style={{
+            fontFamily: design?.subtitle?.font,
+            color: design?.subtitle?.color,
+          }}
+        >
+          {design?.subtitle?.text}
+        </h3>
       </div>
       <div
         className={`main`}

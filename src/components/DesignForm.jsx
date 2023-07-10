@@ -41,11 +41,32 @@ function DesignForm({ userDesign, characters, setCharacters }) {
             }}
           >
             {design?.title?.text}
-            <br />
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
-            ipsum cumque non numquam blanditiis amet libero delectus. Maxime,
-            fugit architecto ipsam quae consectetur officia a voluptatem omnis,
-            laborum quo amet!
+          </p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Subtitle</legend>
+          <label>Subtitle</label>
+          <input
+            type='text'
+            defaultValue='subtitle'
+            {...register('subtitle.text')}
+          ></input>
+          <label>color</label>
+          <input
+            type='color'
+            defaultValue='#000000'
+            {...register('subtitle.color')}
+          ></input>
+          <label>font</label>
+          <FontSelector register={register('subtitle.font')} />
+          <p
+            style={{
+              fontFamily: design?.subtitle?.font,
+              color: design?.subtitle?.color,
+            }}
+          >
+            {design?.subtitle?.text}
           </p>
         </fieldset>
         <button type='submit'>apply</button>

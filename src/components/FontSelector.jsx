@@ -34,13 +34,26 @@ function FontSelector({ register }) {
       console.log(e.message);
     },
   });
-
   if (status === 'loading') {
-    return <select>Loading...</select>;
+    return (
+      <select>
+        <option style={{ fontFamily: 'Arial' }} value='Arial'>
+          Arial
+        </option>
+        <option disabled>Loading...</option>
+      </select>
+    );
   }
 
   if (status === 'error') {
-    return <select>Error: {error.message}</select>;
+    return (
+      <select>
+        <option style={{ fontFamily: 'Arial' }} value='Arial'>
+          Arial
+        </option>
+        <option disabled>Error: {error.message}</option>
+      </select>
+    );
   }
 
   return (
@@ -52,22 +65,22 @@ function FontSelector({ register }) {
       }}
       value={selectedFont}
     >
-      <option key={uuid()} style={{ fontFamily: 'Arial' }} value='Arial'>
-        {data.items.map(
-          (datum) =>
-            (datum.variants.includes('regular') ||
-              datum.variants.includes('500')) && (
-              <option
-                key={uuid()}
-                value={datum.family}
-                style={{ fontFamily: datum.family }}
-              >
-                {datum.family}
-              </option>
-            )
-        )}
+      <option style={{ fontFamily: 'Arial' }} value='Arial'>
         Arial
       </option>
+      {data.items.map(
+        (datum) =>
+          (datum.variants.includes('regular') ||
+            datum.variants.includes('500')) && (
+            <option
+              key={uuid()}
+              value={datum.family}
+              style={{ fontFamily: datum.family }}
+            >
+              {datum.family}
+            </option>
+          )
+      )}
     </select>
   );
 }

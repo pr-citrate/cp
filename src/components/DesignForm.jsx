@@ -21,17 +21,9 @@ function DesignForm({ userDesign, characters, setCharacters }) {
         <fieldset>
           <legend>Title</legend>
           <label>Title</label>
-          <input
-            type='text'
-            defaultValue='title'
-            {...register('title.text')}
-          ></input>
+          <input type='text' defaultValue='title' {...register('title.text')} />
           <label>color</label>
-          <input
-            type='color'
-            defaultValue='#000000'
-            {...register('title.color')}
-          ></input>
+          <input type='color' {...register('title.color')} />
           <label>font</label>
           <FontSelector register={register('title.font')} />
           <p
@@ -51,13 +43,13 @@ function DesignForm({ userDesign, characters, setCharacters }) {
             type='text'
             defaultValue='subtitle'
             {...register('subtitle.text')}
-          ></input>
+          />
           <label>color</label>
           <input
             type='color'
             defaultValue='#000000'
             {...register('subtitle.color')}
-          ></input>
+          />
           <label>font</label>
           <FontSelector register={register('subtitle.font')} />
           <p

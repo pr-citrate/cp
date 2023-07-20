@@ -1,9 +1,9 @@
 @use './../../constants/constants' as *;
-
-@mixin flex($direction: row) {
+@use '_reset' as *;
+@mixin flex($direction: row, $justify: center) {
   display: flex;
   flex-direction: $direction;
-  justify-content: center;
+  justify-content: $justify;
   align-items: center;
 }
 
@@ -23,20 +23,31 @@
   width: $img-width;
   height: $img-height;
   background-color: white;
-  @include flex(row);
+  @include flex;
 }
 
 .header {
+  height: 100%;
   @extend %side;
+  @include flex(column);
 }
 
 .main {
   width: $img-height;
+  height: 100%;
   position: relative;
 }
 
 .footer {
   @extend %side;
+  position: relative;
+  height: 100%;
+  .dev {
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    font-style: italic;
+  }
 }
 
 .character {

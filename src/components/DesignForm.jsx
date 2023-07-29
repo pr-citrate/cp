@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 
 function DesignForm({ userDesign, characters, setCharacters }) {
   const [design, setDesign] = useState({});
+  const [fileName, setFileName] = useState('첨부파일');
   const { register, watch, trigger } = useForm({
     defaultValues: userDesign,
   });
@@ -81,6 +82,33 @@ function DesignForm({ userDesign, characters, setCharacters }) {
 
         <fieldset>
           <legend>background</legend>
+          <div className='filebox'>
+            <input readOnly className='upload-name' value={fileName} />
+            <label htmlFor='file'>파일찾기</label>
+            <input
+              type='file'
+              id='file'
+              onChange={(e) => {
+                setFileName(e.target.value);
+                const file = e.target.files[0];
+
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                  document.querySelector(
+                    '.container'
+                  ).style.backgroundImage = `url(${reader.result})`;
+                };
+
+                if (file) {
+                  reader.readAsDataURL(file);
+                }
+
+                // document.querySelector(
+                //   '.container'
+                // ).style.backgroundImage = `url(${e.target.files[0]})`;
+              }}
+            />
+          </div>
         </fieldset>
 
         <button type='submit'>apply</button>

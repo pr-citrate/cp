@@ -142,3 +142,35 @@
 .selected {
   background-color: gray;
 }
+
+.filebox {
+  .upload-name {
+    display: inline-block;
+    height: 2em;
+    padding: 0 1em;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 10em;
+    color: #999999;
+  }
+
+  label {
+    display: inline-block;
+    padding: 0.5em 1em;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #999999;
+    cursor: pointer;
+    height: 2em;
+    margin-left: 0.5em;
+  }
+
+  input[type='file'] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+  }
+}

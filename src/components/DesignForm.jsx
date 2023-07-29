@@ -26,10 +26,18 @@ function DesignForm({ userDesign, characters, setCharacters }) {
           <input type='color' {...register('title.color')} />
           <label>font</label>
           <FontSelector register={register('title.font')} />
+          <input
+            type='range'
+            min={12}
+            max={40}
+            step={4}
+            {...register('title.size')}
+          />
           <p
             style={{
               fontFamily: design?.title?.font,
               color: design?.title?.color,
+              fontSize: design?.title?.size + 'px',
             }}
           >
             {design?.title?.text}
@@ -52,15 +60,29 @@ function DesignForm({ userDesign, characters, setCharacters }) {
           />
           <label>font</label>
           <FontSelector register={register('subtitle.font')} />
+          <input
+            type='range'
+            min={12}
+            max={40}
+            step={4}
+            defaultValue={24}
+            {...register('subtitle.size')}
+          />
           <p
             style={{
               fontFamily: design?.subtitle?.font,
               color: design?.subtitle?.color,
+              fontSize: design?.subtitle?.size + 'px',
             }}
           >
             {design?.subtitle?.text}
           </p>
         </fieldset>
+
+        <fieldset>
+          <legend>background</legend>
+        </fieldset>
+
         <button type='submit'>apply</button>
       </form>
       <Main characters={characters} setCharacters={setCharacters} />

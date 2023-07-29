@@ -41,6 +41,7 @@ function Main({ characters, setCharacters }) {
           style={{
             fontFamily: design?.title?.font,
             color: design?.title?.color,
+            fontSize: design?.title?.size + 'px',
           }}
         >
           {design?.title?.text}
@@ -50,6 +51,7 @@ function Main({ characters, setCharacters }) {
           style={{
             fontFamily: design?.subtitle?.font,
             color: design?.subtitle?.color,
+            fontSize: design?.subtitle?.size + 'px',
           }}
         >
           {design?.subtitle?.text}

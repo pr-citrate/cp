@@ -28,8 +28,8 @@ function DesignForm({ userDesign, characters, setCharacters }) {
           <FontSelector register={register('title.font')} />
           <input
             type='range'
-            min={12}
-            max={40}
+            min={20}
+            max={60}
             step={4}
             {...register('title.size')}
           />

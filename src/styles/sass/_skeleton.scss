@@ -25,7 +25,9 @@
   width: $img-width;
   height: $img-height;
   background-color: white;
+  background-size: cover;
   @include flex;
+  text-align: center;
 }
 
 .header {

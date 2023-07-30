@@ -18,8 +18,9 @@ function Arrows({ characters, setCharacters, relations }) {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'black';
-    ctx.strokeStyle = 'black';
+    const color = design?.arrow?.color ? design?.arrow?.color : '#000000';
+    ctx.fillStyle = color;
+    ctx.strokeStyle = color;
     ctx.lineWidth = 1;
     setTimeout(() => {
       requestAnimationFrame(() => {
@@ -35,13 +36,12 @@ function Arrows({ characters, setCharacters, relations }) {
       });
     }, c.animationDuration * 1000);
     // }
-  }, [characters.length, JSON.stringify(relations)]);
+  }, [characters.length, JSON.stringify(relations), design?.arrow?.color]);
 
   return (
     <canvas
       ref={canvasRef}
       className={`canvas`}
-      style={design?.canvas}
       width={c.imgWidth}
       height={c.imgHeight}
     ></canvas>

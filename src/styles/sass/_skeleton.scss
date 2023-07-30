@@ -50,7 +50,11 @@
     position: absolute;
     right: 1em;
     bottom: 1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-style: italic;
+    font-size: 1.5em;
+    font-weight: bolder;
+    -webkit-text-stroke: 0.5px white;
   }
 }
 
@@ -175,4 +179,9 @@
     overflow: hidden;
     border: 0;
   }
+}
+
+.imgSelect {
+  height: 5em;
+  width: 9em;
 }

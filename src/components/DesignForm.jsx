@@ -9,10 +9,21 @@ import { useEffect } from 'react';
 
 function DesignForm({ userDesign, characters, setCharacters }) {
   const [design, setDesign] = useState({});
+  const [imgType, setImgType] = useState('color');
   const [fileName, setFileName] = useState('첨부파일');
   const { register, watch, trigger } = useForm({
     defaultValues: userDesign,
   });
+  const bgImgs = [
+    'aurora.jpg',
+    'bokeh.jpg',
+    'clouds.jpg',
+    'lamp.jpg',
+    'leaves.jpg',
+    'milky-way.jpg',
+    'pool.jpg',
+    'water.jpg',
+  ];
   console.log(watch());
   useLayoutEffect(() => setDesign(watch()), []);
 
@@ -34,15 +45,6 @@ function DesignForm({ userDesign, characters, setCharacters }) {
             step={4}
             {...register('title.size')}
           />
-          <p
-            style={{
-              fontFamily: design?.title?.font,
-              color: design?.title?.color,
-              fontSize: design?.title?.size + 'px',
-            }}
-          >
-            {design?.title?.text}
-          </p>
         </fieldset>
 
         <fieldset>
@@ -69,19 +71,48 @@ function DesignForm({ userDesign, characters, setCharacters }) {
             defaultValue={24}
             {...register('subtitle.size')}
           />
-          <p
-            style={{
-              fontFamily: design?.subtitle?.font,
-              color: design?.subtitle?.color,
-              fontSize: design?.subtitle?.size + 'px',
-            }}
-          >
-            {design?.subtitle?.text}
-          </p>
         </fieldset>
 
         <fieldset>
           <legend>background</legend>
+          {/* about 9:5 */}
+          <div>
+            <input
+              type='radio'
+              name='background'
+              value='color'
+              defaultChecked
+            />
+            <input type='radio' name='background' value='webimg' />
+            <input type='radio' name='background' value='userimg' />
+          </div>
+          <input
+            type='color'
+            defaultValue='#FFFFFF'
+            onChange={(e) => {
+              document.querySelector('.container').style.backgroundImage =
+                'none';
+              document.querySelector('.container').style.backgroundColor =
+                e.target.value;
+            }}
+          />
+          <div>
+            {bgImgs.map((imgName) => (
+              <div
+                key={imgName}
+                className='imgSelect'
+                onClick={(e) => {
+                  document.querySelector('.container').style.backgroundColor =
+                    '#FFFFFF';
+                  document.querySelector('.container').style.backgroundImage =
+                    e.target.style.backgroundImage;
+                }}
+                style={{
+                  backgroundImage: `url('./../../assets/images/${imgName}')`,
+                }}
+              ></div>
+            ))}
+          </div>
           <div className='filebox'>
             <input readOnly className='upload-name' value={fileName} />
             <label htmlFor='file'>파일찾기</label>
@@ -102,13 +133,18 @@ function DesignForm({ userDesign, characters, setCharacters }) {
                 if (file) {
                   reader.readAsDataURL(file);
                 }
-
-                // document.querySelector(
-                //   '.container'
-                // ).style.backgroundImage = `url(${e.target.files[0]})`;
               }}
             />
           </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>arrow</legend>
+          <input
+            type='color'
+            defaultValue='#000000'
+            {...register('arrow.color')}
+          />
         </fieldset>
 
         <button type='submit'>apply</button>

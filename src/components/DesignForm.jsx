@@ -15,14 +15,14 @@ function DesignForm({ userDesign, characters, setCharacters }) {
     defaultValues: userDesign,
   });
   const bgImgs = [
-    'aurora.jpg',
-    'bokeh.jpg',
-    'clouds.jpg',
-    'lamp.jpg',
-    'leaves.jpg',
-    'milky-way.jpg',
-    'pool.jpg',
-    'water.jpg',
+    'aurora.webp',
+    'bokeh.webp',
+    'clouds.webp',
+    'lamp.webp',
+    'leaves.webp',
+    'milky-way.webp',
+    'pool.webp',
+    'water.webp',
   ];
   console.log(watch());
   useLayoutEffect(() => setDesign(watch()), []);
@@ -77,18 +77,33 @@ function DesignForm({ userDesign, characters, setCharacters }) {
           <legend>background</legend>
           {/* about 9:5 */}
           <div>
+            <label>color</label>
             <input
               type='radio'
               name='background'
               value='color'
+              onClick={(e) => setImgType(e.target.value)}
               defaultChecked
             />
-            <input type='radio' name='background' value='webimg' />
-            <input type='radio' name='background' value='userimg' />
+            <label>webimg</label>
+            <input
+              type='radio'
+              name='background'
+              value='webimg'
+              onClick={(e) => setImgType(e.target.value)}
+            />
+            <label>userimg</label>
+            <input
+              type='radio'
+              name='background'
+              value='userimg'
+              onClick={(e) => setImgType(e.target.value)}
+            />
           </div>
           <input
             type='color'
             defaultValue='#FFFFFF'
+            disabled={imgType === 'color' ? false : true}
             onChange={(e) => {
               document.querySelector('.container').style.backgroundImage =
                 'none';
@@ -96,16 +111,17 @@ function DesignForm({ userDesign, characters, setCharacters }) {
                 e.target.value;
             }}
           />
-          <div>
+          <div className='imgSelect'>
             {bgImgs.map((imgName) => (
               <div
                 key={imgName}
-                className='imgSelect'
                 onClick={(e) => {
-                  document.querySelector('.container').style.backgroundColor =
-                    '#FFFFFF';
-                  document.querySelector('.container').style.backgroundImage =
-                    e.target.style.backgroundImage;
+                  if (imgType === 'webimg') {
+                    document.querySelector('.container').style.backgroundColor =
+                      '#FFFFFF';
+                    document.querySelector('.container').style.backgroundImage =
+                      e.target.style.backgroundImage;
+                  }
                 }}
                 style={{
                   backgroundImage: `url('./../../assets/images/${imgName}')`,
@@ -119,6 +135,8 @@ function DesignForm({ userDesign, characters, setCharacters }) {
             <input
               type='file'
               id='file'
+              accept='image/*'
+              disabled={imgType === 'userimg' ? false : true}
               onChange={(e) => {
                 setFileName(e.target.value);
                 const file = e.target.files[0];

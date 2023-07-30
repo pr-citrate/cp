@@ -182,6 +182,10 @@
 }
 
 .imgSelect {
-  height: 5em;
-  width: 9em;
+  @include flex;
+  div {
+    height: 5em;
+    width: 9em;
+    background-size: cover;
+  }
 }

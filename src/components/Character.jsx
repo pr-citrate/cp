@@ -177,7 +177,8 @@ function Character({
         style={{
           top: character.yPos + 'px',
           left: character.xPos + 'px',
-          ...{ ...design?.character },
+          backgroundColor: design?.characters?.bgcolor,
+          color: design?.characters?.color,
         }}
         onClick={handleClick}
       >
@@ -187,7 +188,10 @@ function Character({
           onChange={handleUpdate}
           onKeyDown={handleEnter}
           ref={inputRef}
-          style={design?.name}
+          style={{
+            color: design?.characters?.color,
+            fontFamily: design?.characters?.font,
+          }}
           value={inputName}
         ></input>
       </button>
@@ -196,28 +200,18 @@ function Character({
         ref={contextRef}
         style={{
           display: showContext ? 'flex' : 'none',
-          ...{ ...design?.contextMenuContainer },
         }}
       >
         <button
           className={`context-menu`}
           onClick={() => handleDelete(character.id)}
-          style={design?.contextMenu}
         >
           delete
         </button>
-        <button
-          className={`context-menu`}
-          onClick={handleHighlight}
-          style={design?.contextMenu}
-        >
+        <button className={`context-menu`} onClick={handleHighlight}>
           {onHighlight ? 'cancel highlighting' : 'highlight'}
         </button>
-        <button
-          className={`context-menu`}
-          onClick={handleEdit}
-          style={design?.contextMenu}
-        >
+        <button className={`context-menu`} onClick={handleEdit}>
           edit
         </button>
       </div>

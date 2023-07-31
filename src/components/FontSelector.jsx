@@ -25,6 +25,7 @@ function FontSelector({ register }) {
         setSelectedFont(e.target.value);
       }}
       value={selectedFont}
+      style={{ fontFamily: selectedFont }}
     >
       {data.map((datum) => (
         <option key={uuid()} value={datum} style={{ fontFamily: datum }}>

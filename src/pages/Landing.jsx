@@ -9,7 +9,7 @@ import DesignWrapper from '../utils/DesignWrapper';
 import './../styles/Landing.css';
 
 import Main from '../components/main';
-import AddForm from '../components/AddForm';
+import ActionForm from '../components/AddForm';
 import CaptureButton from '../components/CaptureButton';
 import DesignForm from '../components/DesignForm';
 
@@ -44,7 +44,7 @@ function Landing() {
   return (
     <QueryClientProvider client={queryClient}>
       <h1>CP</h1>
-      <AddForm characters={characters} setCharacters={setCharacters} />
+      <ActionForm characters={characters} setCharacters={setCharacters} />
       <DesignForm
         userDesign={{ ...queryString.design }}
         characters={characters}

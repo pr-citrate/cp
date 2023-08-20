@@ -4,7 +4,7 @@ import uuid from 'react-uuid';
 import setPosition from '../utils/setPosition';
 import CaptureButton from './CaptureButton';
 
-function AddForm({ characters, setCharacters, updatePointsPositions }) {
+function ActionForm({ characters, setCharacters, updatePointsPositions }) {
   const [inputValue, setInputValue] = useState('');
 
   const handleAdd = () => {
@@ -28,7 +28,7 @@ function AddForm({ characters, setCharacters, updatePointsPositions }) {
   };
 
   return (
-    <div className='add-form'>
+    <div className='action-form'>
       <div>
         <input
           className='add-input-field'
@@ -43,4 +43,4 @@ function AddForm({ characters, setCharacters, updatePointsPositions }) {
   );
 }
 
-export default AddForm;
+export default ActionForm;

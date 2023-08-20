@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import uuid from 'react-uuid';
 
 import setPosition from '../utils/setPosition';
+import CaptureButton from './CaptureButton';
 
 function AddForm({ characters, setCharacters, updatePointsPositions }) {
   const [inputValue, setInputValue] = useState('');
@@ -28,13 +29,16 @@ function AddForm({ characters, setCharacters, updatePointsPositions }) {
 
   return (
     <div className='add-form'>
-      <input
-        className='add-input-field'
-        value={inputValue}
-        onChange={handleInputOnChange}
-        onKeyDown={handleInputKeyDown}
-      />
-      <button onClick={handleAdd}>Add</button>
+      <div>
+        <input
+          className='add-input-field'
+          value={inputValue}
+          onChange={handleInputOnChange}
+          onKeyDown={handleInputKeyDown}
+        />
+        <button onClick={handleAdd}>Add</button>
+      </div>
+      <CaptureButton />
     </div>
   );
 }

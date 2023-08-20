@@ -43,13 +43,13 @@ function Landing() {
   // /?design%5Bname%5D%5Bcolor%5D=red
   return (
     <QueryClientProvider client={queryClient}>
+      <h1>CP</h1>
+      <AddForm characters={characters} setCharacters={setCharacters} />
       <DesignForm
         userDesign={{ ...queryString.design }}
         characters={characters}
         setCharacters={setCharacters}
       />
-      <AddForm characters={characters} setCharacters={setCharacters} />
-      <CaptureButton />
     </QueryClientProvider>
   );
 }

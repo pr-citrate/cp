@@ -4,6 +4,7 @@ import setPosition from '../utils/setPosition';
 import { designContext } from '../utils/DesignWrapper';
 import Arrows from './Arrows';
 import Character from './Character';
+import c from '../constants/constants';
 
 const MemoizedCharacter = memo(Character);
 
@@ -34,7 +35,13 @@ function Main({ characters, setCharacters }) {
   };
 
   return (
-    <div className={`container`} style={design?.container}>
+    <div
+      className={`container`}
+      style={{
+        ...design?.container,
+        transform: `scale(${(window.innerWidth * 0.7) / c.imgWidth})`,
+      }}
+    >
       <div className={`header`} style={design?.header}>
         <h2
           className='title'

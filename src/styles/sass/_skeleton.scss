@@ -15,6 +15,9 @@
 fieldset {
   padding: 0 3em;
   margin-bottom: 2em;
+  > div {
+    margin-bottom: 0.5em;
+  }
   > legend {
     font-size: 1.5em;
     margin-bottom: 0.5em;
@@ -40,6 +43,12 @@ fieldset {
       height: 2em;
       width: 2em;
     }
+    &[type='radio'] {
+      font-size: inherit;
+      width: 1em;
+      height: 1em;
+      margin: none;
+    }
   }
 }
 
@@ -53,6 +62,7 @@ fieldset {
 }
 
 .container {
+  border: 1px solid black;
   width: $img-width;
   height: $img-height;
   background-color: white;
@@ -167,7 +177,11 @@ fieldset {
 }
 
 .add-form {
+  > div {
+    display: inline-flex;
+  }
   @include flex;
+  gap: 1em;
 }
 
 .add-input-field {
@@ -200,6 +214,7 @@ fieldset {
     cursor: pointer;
     height: 2em;
     margin-left: 0.5em;
+    text-align: center;
   }
 
   input[type='file'] {
@@ -213,9 +228,10 @@ fieldset {
 }
 
 .imgSelect {
-  @include flex(row, space-between);
-  flex-wrap: wrap;
-  width: 39em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  width: 19em;
   gap: 1em;
   > div {
     flex-grow: 0;
@@ -225,4 +241,35 @@ fieldset {
     border-radius: 0.5em;
     background-size: cover;
   }
+}
+
+.selector {
+  padding: 0;
+  margin-bottom: 0.5em;
+  > :first-child {
+    margin-bottom: 0.5em;
+    label {
+      width: 4em;
+    }
+  }
+}
+.main-container {
+  @include flex;
+  align-items: flex-start;
+  padding: 1em;
+}
+form {
+  order: 2;
+  width: 40vw;
+}
+
+.main-direct-container {
+  @include flex;
+  width: 70vw;
+}
+h1 {
+  display: block;
+  text-align: center;
+  font-size: 3em;
+  margin: 1em 0 2em;
 }

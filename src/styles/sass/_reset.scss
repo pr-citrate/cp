@@ -3,6 +3,12 @@
   word-break: keep-all;
 }
 
+:root,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
 html,
 body,
 div,

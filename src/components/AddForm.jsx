@@ -3,6 +3,7 @@ import uuid from 'react-uuid';
 
 import setPosition from '../utils/setPosition';
 import CaptureButton from './CaptureButton';
+import ShareButton from './ShareButton';
 
 function ActionForm({ characters, setCharacters, updatePointsPositions }) {
   const [inputValue, setInputValue] = useState('');
@@ -39,6 +40,7 @@ function ActionForm({ characters, setCharacters, updatePointsPositions }) {
         <button onClick={handleAdd}>Add</button>
       </div>
       <CaptureButton />
+      <ShareButton characters={characters} />
     </div>
   );
 }

@@ -24,27 +24,32 @@ function Landing() {
     ignoreQueryPrefix: true,
   });
 
-  const [characters, setCharacters] = useState(
-    setPosition([
-      { id: uuid(), name: 'c1' },
-      { id: uuid(), name: 'c2' },
-      { id: uuid(), name: 'c3' },
-      { id: uuid(), name: 'c4' },
-      { id: uuid(), name: 'c5' },
-      { id: uuid(), name: 'c6' },
-      { id: uuid(), name: 'c7' },
-      { id: uuid(), name: 'c8' },
-      { id: uuid(), name: 'c9' },
-    ])
+  console.log(
+    [...(queryString?.characters || [])].map((name) => {
+      return { name: name, id: uuid() };
+    })
   );
 
-  console.log(QueryString.stringify({ design: { name: { color: 'red' } } }));
-  console.log('qs', queryString.design);
+  const [characters, setCharacters] = useState(
+    setPosition(
+      [...(queryString?.characters || [])].map((name) => {
+        return { name: name, id: uuid() };
+      })
+    )
+  );
+
+  console.log(
+    QueryString.parse(
+      'characters%5B0%5D=c1&characters%5B1%5D=c2&characters%5B2%5D=c3&characters%5B3%5D=c4&characters%5B4%5D=c5&characters%5B5%5D=c6&characters%5B6%5D=c7&characters%5B7%5D=c8&characters%5B8%5D=c9'
+    )
+  );
+  console.log('qs', { ...queryString?.design }, [
+    ...(queryString?.characters || []),
+  ]);
   // /?design%5Bname%5D%5Bcolor%5D=red
   return (
     <QueryClientProvider client={queryClient}>
       <h1>CP</h1>
-      <ActionForm characters={characters} setCharacters={setCharacters} />
       <DesignForm
         userDesign={{ ...queryString.design }}
         characters={characters}

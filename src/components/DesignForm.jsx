@@ -6,11 +6,13 @@ import { useForm } from 'react-hook-form';
 import { useLayoutEffect } from 'react';
 import Main from './main';
 import { useEffect } from 'react';
+import ActionForm from './AddForm';
 
 function DesignForm({ userDesign, characters, setCharacters }) {
   const [design, setDesign] = useState({});
   const [imgType, setImgType] = useState('color');
   const [fileName, setFileName] = useState('첨부파일');
+  const [file, setFile] = useState(null);
   const { register, watch, trigger } = useForm({
     defaultValues: userDesign,
   });
@@ -29,6 +31,7 @@ function DesignForm({ userDesign, characters, setCharacters }) {
 
   return (
     <DesignWrapper design={design}>
+      <ActionForm characters={characters} setCharacters={setCharacters} />
       <div className='main-container'>
         <form onSubmit={(e) => e.preventDefault()}>
           <fieldset>
@@ -107,22 +110,14 @@ function DesignForm({ userDesign, characters, setCharacters }) {
                     type='radio'
                     name='background'
                     value='color'
-                    onClick={(e) => setImgType(e.target.value)}
+                    {...register('background.bgType')}
                     defaultChecked
                   />
                   <label>color</label>
                   <input
                     type='color'
                     defaultValue='#FFFFFF'
-                    disabled={imgType === 'color' ? false : true}
-                    onChange={(e) => {
-                      document.querySelector(
-                        '.container'
-                      ).style.backgroundImage = 'none';
-                      document.querySelector(
-                        '.container'
-                      ).style.backgroundColor = e.target.value;
-                    }}
+                    {...register('background.color')}
                   />
                 </div>
               </div>
@@ -132,36 +127,51 @@ function DesignForm({ userDesign, characters, setCharacters }) {
                     type='radio'
                     name='background'
                     value='webimg'
-                    onClick={(e) => setImgType(e.target.value)}
+                    {...register('background.bgType')}
                   />
                   <label>webimg</label>
                 </div>
                 <div className='imgSelect'>
-                  {bgImgs.map((imgName) => (
-                    <div
-                      key={imgName}
-                      className='bgimgs'
-                      onClick={(e) => {
-                        if (imgType === 'webimg') {
-                          document
-                            .querySelectorAll('.bgimgs')
-                            .forEach((elem) => {
-                              elem.style.outline = 'none';
-                            });
-                          e.target.style.outline = '0.3em solid skyblue';
-                          document.querySelector(
-                            '.container'
-                          ).style.backgroundColor = '#FFFFFF';
-                          document.querySelector(
-                            '.container'
-                          ).style.backgroundImage =
-                            e.target.style.backgroundImage;
-                        }
-                      }}
-                      style={{
-                        backgroundImage: `url('./../../assets/images/${imgName}')`,
-                      }}
-                    ></div>
+                  {bgImgs.map((imgName, index) => (
+                    <div key={imgName}>
+                      <input
+                        type='radio'
+                        name='bgimgs'
+                        defaultChecked={index === 0 ? true : false}
+                        value={`./../../assets/images/${imgName}`}
+                        {...register('background.internalLink')}
+                      />
+                      <img
+                        className='bgimgs'
+                        src={`./../../assets/images/${imgName}`}
+                        onClick={(e) => {
+                          e.target.previousSibling.click();
+
+                          if (design.background.bgType === 'webimg') {
+                            document
+                              .querySelectorAll('.bgimgs')
+                              .forEach((elem) => {
+                                elem.style.outline = 'none';
+                              });
+                            e.target.style.outline = '0.3em solid skyblue';
+                          }
+                        }}
+                      />
+                      {/* <div
+                        key={imgName}
+                        className='bgimgs'
+                        onClick={(e) => {
+                            document.querySelector(
+                              '.container'
+                            ).style.backgroundColor = '#FFFFFF';
+                            document.querySelector(
+                              '.container'
+                            ).style.backgroundImage =
+                              e.target.style.backgroundImage;
+                          }
+                        }}
+                      ></div> */}
+                    </div>
                   ))}
                 </div>
               </div>
@@ -170,35 +180,14 @@ function DesignForm({ userDesign, characters, setCharacters }) {
                   <input
                     type='radio'
                     name='background'
-                    value='userimg'
-                    onClick={(e) => setImgType(e.target.value)}
+                    value='externalimg'
+                    {...register('background.bgType')}
                   />
-                  <label>userimg</label>
+                  <label>externalimg</label>
                 </div>
-                <div className='filebox'>
-                  <input readOnly className='upload-name' value={fileName} />
-                  <label htmlFor='file'>find</label>
-                  <input
-                    type='file'
-                    id='file'
-                    accept='image/*'
-                    disabled={imgType === 'userimg' ? false : true}
-                    onChange={(e) => {
-                      setFileName(e.target.value);
-                      const file = e.target.files[0];
-
-                      const reader = new FileReader();
-                      reader.onloadend = () => {
-                        document.querySelector(
-                          '.container'
-                        ).style.backgroundImage = `url(${reader.result})`;
-                      };
-
-                      if (file) {
-                        reader.readAsDataURL(file);
-                      }
-                    }}
-                  />
+                <div>
+                  <label>url</label>
+                  <input type='text' {...register('background.externalLink')} />
                 </div>
               </div>
             </div>

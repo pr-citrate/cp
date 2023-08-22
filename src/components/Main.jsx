@@ -38,7 +38,15 @@ function Main({ characters, setCharacters }) {
     <div
       className={`container`}
       style={{
-        ...design?.container,
+        background: `${
+          design?.background?.bgType === 'color'
+            ? design?.background?.color
+            : design?.background?.bgType === 'webimg'
+            ? `url(${design?.background?.internalLink})`
+            : design?.background?.bgType === 'externalimg'
+            ? `center / contain url(${design?.background?.externalLink})`
+            : 'white'
+        }`,
         transform: `scale(${(window.innerWidth * 0.7) / c.imgWidth})`,
       }}
     >

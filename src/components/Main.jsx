@@ -5,6 +5,7 @@ import { designContext } from '../utils/DesignWrapper';
 import Arrows from './Arrows';
 import Character from './Character';
 import c from '../constants/constants';
+import { useEffect } from 'react';
 
 const MemoizedCharacter = memo(Character);
 
@@ -12,6 +13,7 @@ function Main({ characters, setCharacters }) {
   const [relations, setRelations] = useState([]);
   const [selected, setSelected] = useState(null);
   const design = useContext(designContext);
+
   const handleDelete = (id) => {
     setCharacters(
       setPosition(

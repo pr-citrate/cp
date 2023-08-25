@@ -166,10 +166,31 @@ function Character({
     contextRef.current.style.top = event.clientY + 'px';
     contextRef.current.style.left = event.clientX + 'px';
   };
+  const handleDragDrop = (event) => {
+    const selfIndex = characters.findIndex((obj) => {
+      return character.id === obj.id;
+    });
+    const otherIndex = characters.findIndex((obj) => {
+      return event.target.id === obj.id;
+    });
+    setCharacters(
+      setPosition(
+        characters.map((obj, index) =>
+          index === selfIndex
+            ? characters[selfIndex]
+            : index === otherIndex
+            ? characters[otherIndex]
+            : obj
+        )
+      )
+    );
+  };
 
   return (
     <div onContextMenu={handleContextMenu}>
       <button
+        id={id}
+        draggable
         ref={buttonRef}
         className={`character fadein
           ${onHighlight ? 'highlight' : ''}
@@ -180,6 +201,7 @@ function Character({
           backgroundColor: design?.characters?.bgcolor,
           color: design?.characters?.color,
         }}
+        onDrop={handleDragDrop}
         onClick={handleClick}
       >
         <input

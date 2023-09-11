@@ -1,12 +1,9 @@
-import { useState, useContext } from 'react';
-import { designContext } from '../utils/DesignWrapper';
-import FontSelector from './FontSelector';
-import DesignWrapper from '../utils/DesignWrapper';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useLayoutEffect } from 'react';
-import Main from './main';
-import { useEffect } from 'react';
-import ActionForm from './ActionForm';
+import DesignWrapper from '../utils/DesignWrapper.jsx';
+import ActionForm from './ActionForm.jsx';
+import FontSelector from './FontSelector.jsx';
+import Main from './main.jsx';
 
 function DesignForm({ userDesign, characters, setCharacters }) {
   const [design, setDesign] = useState({});

@@ -1,6 +1,6 @@
 import { toPng } from 'html-to-image';
 import React from 'react';
-import c from '../constants/constants';
+import c from '../constants/constants.jsx';
 
 export default function CaptureButton() {
   async function downloadElement() {

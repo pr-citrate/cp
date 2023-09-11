@@ -1,7 +1,8 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 
-import setPosition from '../utils/setPosition';
-import { designContext } from '../utils/DesignWrapper';
+import setPosition from '../utils/setPosition.jsx';
+import { designContext } from '../utils/DesignWrapper.jsx';
+
 function Character({
   characters,
   handleDelete,

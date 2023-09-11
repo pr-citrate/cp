@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import { stringify } from 'qs';
-import { designContext } from '../utils/DesignWrapper';
+import { designContext } from '../utils/DesignWrapper.jsx';
 
 function ShareButton({ characters }) {
   const design = useContext(designContext);

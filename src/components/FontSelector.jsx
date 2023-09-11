@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import uuid from 'react-uuid';
 
 function FontSelector({ register }) {

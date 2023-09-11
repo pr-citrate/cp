@@ -1,4 +1,4 @@
-import c from './../constants/constants';
+import c from './../constants/constants.jsx';
 
 function setPosition(characters) {
   function getXPos(order, total) {

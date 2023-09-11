@@ -1,6 +1,6 @@
-import c from './../constants/constants';
-import { drawBody, drawDots, drawHead } from '../utils/drawing';
-import { designContext } from '../utils/DesignWrapper';
+import c from './../constants/constants.jsx';
+import { drawBody, drawDots, drawHead } from '../utils/drawing.jsx';
+import { designContext } from '../utils/DesignWrapper.jsx';
 import { useEffect, useRef, useContext } from 'react';
 
 function Arrows({ characters, setCharacters, relations, dragged }) {

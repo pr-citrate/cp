@@ -3,15 +3,11 @@ import uuid from 'react-uuid';
 import { useLocation } from 'react-router-dom';
 import QueryString from 'qs';
 
-import setPosition from '../utils/setPosition';
-import DesignWrapper from '../utils/DesignWrapper';
+import setPosition from '../utils/setPosition.jsx';
 
 import './../styles/Landing.css';
 
-import Main from '../components/main';
-import ActionForm from '../components/ActionForm';
-import CaptureButton from '../components/CaptureButton';
-import DesignForm from '../components/DesignForm';
+import DesignForm from '../components/DesignForm.jsx';
 
 import { memo } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';

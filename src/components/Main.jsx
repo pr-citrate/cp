@@ -1,11 +1,10 @@
 import { memo, useContext, useState } from 'react';
-import preventRightClick from '../utils/preventRightClick';
-import setPosition from '../utils/setPosition';
-import { designContext } from '../utils/DesignWrapper';
-import Arrows from './Arrows';
-import Character from './Character';
-import c from '../constants/constants';
-import { useEffect } from 'react';
+import c from '../constants/constants.jsx';
+import { designContext } from '../utils/DesignWrapper.jsx';
+import preventRightClick from '../utils/preventRightClick.jsx';
+import setPosition from '../utils/setPosition.jsx';
+import Arrows from './Arrows.jsx';
+import Character from './Character.jsx';
 
 const MemoizedCharacter = memo(Character);
 

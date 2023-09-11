@@ -1,4 +1,4 @@
-import c from '../constants/constants';
+import c from '../constants/constants.jsx';
 
 const findCharacter = (id, characters) => {
   return characters.find((obj) => obj.id === id);

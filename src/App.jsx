@@ -1,11 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import Loading from './pages/Loading';
+import Loading from './pages/Loading.jsx';
 import { Suspense } from 'react';
 import React from 'react';
 import { useEffect } from 'react';
 
 const Landing = React.lazy(() => import('./pages/Landing'));
-const Test = React.lazy(() => import('./pages/Test'));
 const NotFound = React.lazy(() => import('./pages/NotFound'));
 
 function App() {

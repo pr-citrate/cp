@@ -1,9 +1,9 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import uuid from 'react-uuid';
 
-import setPosition from '../utils/setPosition';
-import CaptureButton from './CaptureButton';
-import ShareButton from './ShareButton';
+import setPosition from '../utils/setPosition.jsx';
+import CaptureButton from './CaptureButton.jsx';
+import ShareButton from './ShareButton.jsx';
 
 function ActionForm({ characters, setCharacters, updatePointsPositions }) {
   const [inputValue, setInputValue] = useState('');

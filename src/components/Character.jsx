@@ -223,13 +223,13 @@ function Character({
         id={id}
         ref={buttonRef}
         className={`character fadein
-          ${onHighlight ? 'highlight' : ''}
-          ${selected === character.id ? 'selected' : ''}`}
+          ${onHighlight ? 'highlight' : ''}`}
         style={{
           top: character.yPos + 'px',
           left: character.xPos + 'px',
           backgroundColor: design?.characters?.bgcolor,
           color: design?.characters?.color,
+          transform: selected === character.id ? 'scale(1.1)' : '',
         }}
         onClick={handleClick}
       >

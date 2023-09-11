@@ -220,7 +220,7 @@ function DesignForm({ userDesign, characters, setCharacters }) {
               <label>background color</label>
               <input
                 type='color'
-                defaultValue='#FFFFFF'
+                defaultValue='#BBBBBB'
                 {...register('characters.bgcolor')}
               />
             </div>

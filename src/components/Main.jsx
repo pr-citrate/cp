@@ -12,6 +12,7 @@ const MemoizedCharacter = memo(Character);
 function Main({ characters, setCharacters }) {
   const [relations, setRelations] = useState([]);
   const [selected, setSelected] = useState(null);
+  const [dragged, setDragged] = useState(null);
   const design = useContext(designContext);
 
   const handleDelete = (id) => {
@@ -44,9 +45,9 @@ function Main({ characters, setCharacters }) {
           design?.background?.bgType === 'color'
             ? design?.background?.color
             : design?.background?.bgType === 'webimg'
-            ? `url(${design?.background?.internalLink})`
+            ? `center / cover url(${design?.background?.internalLink})`
             : design?.background?.bgType === 'externalimg'
-            ? `center / contain url(${design?.background?.externalLink})`
+            ? `center / cover url(${design?.background?.externalLink})`
             : 'white'
         }`,
         transform: `scale(${(window.innerWidth * 0.7) / c.imgWidth})`,
@@ -90,12 +91,15 @@ function Main({ characters, setCharacters }) {
             setCharacters={setCharacters}
             setRelations={setRelations}
             setSelected={setSelected}
+            dragged={dragged}
+            setDragged={setDragged}
           />
         ))}
         <Arrows
           characters={characters}
           relations={relations}
           setCharacters={setCharacters}
+          dragged={dragged}
         />
       </div>
       <div className={`footer`} style={design?.footer}>

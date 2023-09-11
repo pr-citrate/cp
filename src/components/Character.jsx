@@ -11,6 +11,8 @@ function Character({
   setCharacters,
   setRelations,
   setSelected,
+  dragged,
+  setDragged,
 }) {
   const design = useContext(designContext);
   const character = characters.find((obj) => obj.id === id);
@@ -166,31 +168,59 @@ function Character({
     contextRef.current.style.top = event.clientY + 'px';
     contextRef.current.style.left = event.clientX + 'px';
   };
+
+  const handleDragStart = (event) => {
+    setDragged(
+      characters.findIndex((obj) => {
+        return character.id === obj.id;
+      })
+    );
+  };
   const handleDragDrop = (event) => {
+    // console.log('drop');
     const selfIndex = characters.findIndex((obj) => {
       return character.id === obj.id;
     });
-    const otherIndex = characters.findIndex((obj) => {
-      return event.target.id === obj.id;
-    });
+
+    // console.log(
+    //   selfIndex,
+    //   dragged,
+    //   characters.map((obj, index) =>
+    //     index === selfIndex
+    //       ? characters[dragged]
+    //       : index === dragged
+    //       ? characters[selfIndex]
+    //       : obj
+    //   )
+    // );
     setCharacters(
       setPosition(
         characters.map((obj, index) =>
           index === selfIndex
+            ? characters[dragged]
+            : index === dragged
             ? characters[selfIndex]
-            : index === otherIndex
-            ? characters[otherIndex]
             : obj
         )
       )
     );
+    setDragged(null);
   };
 
   return (
-    <div onContextMenu={handleContextMenu}>
+    <div
+      onContextMenu={handleContextMenu}
+      draggable
+      onDragStart={handleDragStart}
+      onDrop={handleDragDrop}
+      onDragOver={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        // console.log('over');
+      }}
+    >
       <button
         id={id}
-        draggable
         ref={buttonRef}
         className={`character fadein
           ${onHighlight ? 'highlight' : ''}
@@ -201,7 +231,6 @@ function Character({
           backgroundColor: design?.characters?.bgcolor,
           color: design?.characters?.color,
         }}
-        onDrop={handleDragDrop}
         onClick={handleClick}
       >
         <input

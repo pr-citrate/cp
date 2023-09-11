@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { useLayoutEffect } from 'react';
 import Main from './main';
 import { useEffect } from 'react';
-import ActionForm from './AddForm';
+import ActionForm from './ActionForm';
 
 function DesignForm({ userDesign, characters, setCharacters }) {
   const [design, setDesign] = useState({});
@@ -26,8 +26,8 @@ function DesignForm({ userDesign, characters, setCharacters }) {
     'pool.webp',
     'water.webp',
   ];
-  console.log(watch());
-  useLayoutEffect(() => setDesign(watch()), []);
+  console.log(watch(), userDesign);
+  useEffect(() => setDesign(watch()), []);
 
   return (
     <DesignWrapper design={design}>
@@ -124,6 +124,9 @@ function DesignForm({ userDesign, characters, setCharacters }) {
               <div className='webimgbg selector'>
                 <div>
                   <input
+                    defaultChecked={
+                      userDesign?.background?.bgType === 'webimg' ? true : false
+                    }
                     type='radio'
                     name='background'
                     value='webimg'
@@ -137,8 +140,14 @@ function DesignForm({ userDesign, characters, setCharacters }) {
                       <input
                         type='radio'
                         name='bgimgs'
-                        defaultChecked={index === 0 ? true : false}
+                        defaultChecked={
+                          userDesign?.background?.internalLink ===
+                          `./../../assets/images/${imgName}`
+                            ? true
+                            : false
+                        }
                         value={`./../../assets/images/${imgName}`}
+                        hidden
                         {...register('background.internalLink')}
                       />
                       <img

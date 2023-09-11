@@ -3,7 +3,7 @@ import { drawBody, drawDots, drawHead } from '../utils/drawing';
 import { designContext } from '../utils/DesignWrapper';
 import { useEffect, useRef, useContext } from 'react';
 
-function Arrows({ characters, setCharacters, relations }) {
+function Arrows({ characters, setCharacters, relations, dragged }) {
   const design = useContext(designContext);
   const canvasRef = useRef(null);
 
@@ -36,7 +36,12 @@ function Arrows({ characters, setCharacters, relations }) {
       });
     }, c.animationDuration * 1000);
     // }
-  }, [characters.length, JSON.stringify(relations), design?.arrow?.color]);
+  }, [
+    characters.length,
+    JSON.stringify(relations),
+    design?.arrow?.color,
+    dragged,
+  ]);
 
   return (
     <canvas

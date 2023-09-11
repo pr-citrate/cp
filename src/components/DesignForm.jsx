@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import DesignWrapper from '../utils/DesignWrapper.jsx';
 import ActionForm from './ActionForm.jsx';
 import FontSelector from './FontSelector.jsx';
-import Main from './main.jsx';
+import Main from './Main.jsx';
 
 function DesignForm({ userDesign, characters, setCharacters }) {
   const [design, setDesign] = useState({});

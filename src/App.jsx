@@ -4,8 +4,8 @@ import { Suspense } from 'react';
 import React from 'react';
 import { useEffect } from 'react';
 
-const Landing = React.lazy(() => import('./pages/Landing'));
-const NotFound = React.lazy(() => import('./pages/NotFound'));
+const Landing = React.lazy(() => import('./pages/Landing.jsx'));
+const NotFound = React.lazy(() => import('./pages/NotFound.jsx'));
 
 function App() {
   const preventClose = (e) => {

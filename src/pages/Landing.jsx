@@ -45,7 +45,7 @@ function Landing() {
   // /?design%5Bname%5D%5Bcolor%5D=red
   return (
     <QueryClientProvider client={queryClient}>
-      <h1>CP</h1>
+      <h1>이거 이름을 뭘로할까요</h1>
       <DesignForm
         userDesign={{ ...queryString.design }}
         characters={characters}

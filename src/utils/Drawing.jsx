@@ -11,6 +11,7 @@ const drawBody = (ctx, relation, characters) => {
     findCharacter(relation.right, characters).pointXPos,
     findCharacter(relation.right, characters).pointYPos,
   ];
+
   const [dx, dy] = [rx - lx, ry - ly];
   const slope = Math.atan2(dy, dx);
   const [sx, sy, ex, ey] = [

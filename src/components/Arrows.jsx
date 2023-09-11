@@ -1,5 +1,5 @@
 import c from './../constants/constants.jsx';
-import { drawBody, drawDots, drawHead } from '../utils/drawing.jsx';
+import { drawBody, drawDots, drawHead } from '../utils/Drawing.jsx';
 import { designContext } from '../utils/DesignWrapper.jsx';
 import { useEffect, useRef, useContext } from 'react';
 

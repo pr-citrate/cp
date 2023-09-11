@@ -1,5 +1,6 @@
 function preventRightClick(event) {
   event.stopPropagation();
+
   event.preventDefault();
 }
 

@@ -1,4 +1,4 @@
-import c from './../constants/constants.jsx';
+import c from '../constants/constants.jsx';
 
 function setPosition(characters) {
   function getXPos(order, total) {
@@ -22,19 +22,6 @@ function setPosition(characters) {
     pos = pos - c.characterHeight / 2;
     return pos;
   }
-
-  // const updatePointPositions = (characters) => {
-  //   let pointPositions = [];
-  //   const length = characters.length;
-  //   characters.forEach((characters, index) => {
-  //     const [pointX, pointY] = getPointPositions(index, length);
-  //     pointPositions = [...pointPositions, [pointX, pointY]];
-  //   });
-  //   return characters.map((obj, idx) => ({
-  //     ...obj,
-  //     pointPos: pointPositions[idx],
-  //   }));
-  // };
 
   function getPointXPos(order, total) {
     const angle = (order / total) * 2 * Math.PI;

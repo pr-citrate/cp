@@ -179,6 +179,24 @@ fieldset {
 .action-form {
   > div {
     display: inline-flex;
+    input {
+      border: 1px solid #4477ee;
+      border-radius: 1em 0 0 1em;
+      color: white;
+    }
+    button {
+      border-radius: 0 1em 1em 0;
+    }
+  }
+  button {
+    height: 3.2rem;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    padding: 0 1.5em;
+    background-color: #4477ee;
+    border: none;
+    border-radius: 1rem;
   }
   @include flex;
   gap: 1em;

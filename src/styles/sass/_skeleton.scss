@@ -190,7 +190,6 @@ fieldset {
     input {
       border: 1px solid #4477ee;
       border-radius: 1em 0 0 1em;
-      color: white;
     }
     button {
       border-radius: 0 1em 1em 0;
@@ -209,12 +208,6 @@ fieldset {
   }
   @include flex;
   gap: 1em;
-}
-
-.add-input-field {
-  &:focus {
-    outline: none;
-  }
 }
 
 .filebox {
@@ -335,5 +328,12 @@ h1 {
       background-color: white;
       color: #252532;
     }
+  }
+}
+.add-input-field {
+  color: black;
+  padding: 1em;
+  &:focus {
+    outline: none;
   }
 }

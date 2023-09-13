@@ -52,9 +52,11 @@ fieldset {
   }
 }
 
-:root {
+:root,
+#root {
   user-select: none;
   font-size: 16px;
+  min-height: 100%;
 }
 
 %side {
@@ -288,4 +290,35 @@ h1 {
   text-align: center;
   font-size: 3em;
   margin: 1em 0 2em;
+}
+
+.nf {
+  @include flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.fof {
+  @include flex(column);
+  h1 {
+    margin: 0;
+  }
+  h2 {
+    margin: 1rem 0 1em;
+    font-size: 2em;
+  }
+  a {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    color: white;
+    background-color: #252532;
+    padding: 1em;
+    border: 1px solid #253532;
+    border-radius: 0.5em;
+    vertical-align: middle;
+    &:hover {
+      background-color: white;
+      color: #252532;
+    }
+  }
 }

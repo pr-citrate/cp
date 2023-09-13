@@ -23,7 +23,6 @@ function DesignForm({ userDesign, characters, setCharacters }) {
     'pool.webp',
     'water.webp',
   ];
-  console.log(watch(), userDesign);
   useEffect(() => setDesign(watch()), []);
 
   return (

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import uuid from 'react-uuid';
 
-import setPosition from '../utils/setPosition.jsx';
+import setPosition from '../utils/SetPosition.jsx';
 import CaptureButton from './CaptureButton.jsx';
 import ShareButton from './ShareButton.jsx';
 

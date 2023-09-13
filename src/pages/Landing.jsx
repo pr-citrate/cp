@@ -1,20 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import uuid from 'react-uuid';
 import { useLocation } from 'react-router-dom';
 import QueryString from 'qs';
 
-import setPosition from '../utils/setPosition.jsx';
+import setPosition from '../utils/SetPosition.jsx';
 
 import './../styles/Landing.css';
 
 import DesignForm from '../components/DesignForm.jsx';
 
-import { memo } from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
-
-const queryClient = new QueryClient();
-
 function Landing() {
+  const preventClose = (e) => {
+    e.preventDefault();
+    e.returnValue = '';
+  };
+
+  useEffect(() => {
+    (() => {
+      window.addEventListener('beforeunload', preventClose);
+    })();
+
+    return () => {
+      window.removeEventListener('beforeunload', preventClose);
+    };
+  }, []);
+
   const location = useLocation();
   const queryString = QueryString.parse(location.search, {
     ignoreQueryPrefix: true,
@@ -44,14 +54,14 @@ function Landing() {
   // ]);
   // /?design%5Bname%5D%5Bcolor%5D=red
   return (
-    <QueryClientProvider client={queryClient}>
-      <h1>이거 이름을 뭘로할까요</h1>
+    <>
+      <h1>이름뭐로하지</h1>
       <DesignForm
         userDesign={{ ...queryString.design }}
         characters={characters}
         setCharacters={setCharacters}
       />
-    </QueryClientProvider>
+    </>
   );
 }
 export default Landing;

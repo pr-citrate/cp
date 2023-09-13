@@ -8,21 +8,6 @@ const Landing = React.lazy(() => import('./pages/Landing.jsx'));
 const NotFound = React.lazy(() => import('./pages/NotFound.jsx'));
 
 function App() {
-  const preventClose = (e) => {
-    e.preventDefault();
-    e.returnValue = '';
-  };
-
-  useEffect(() => {
-    (() => {
-      window.addEventListener('beforeunload', preventClose);
-    })();
-
-    return () => {
-      window.removeEventListener('beforeunload', preventClose);
-    };
-  }, []);
-
   return (
     <Suspense fallback={<Loading />}>
       <Routes>

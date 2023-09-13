@@ -1,8 +1,8 @@
 import { memo, useContext, useState } from 'react';
 import c from '../constants/constants.jsx';
 import { designContext } from '../utils/DesignWrapper.jsx';
-import preventRightClick from '../utils/preventRightClick.jsx';
-import setPosition from '../utils/setPosition.jsx';
+import preventRightClick from '../utils/PreventRightClick.jsx';
+import setPosition from '../utils/SetPosition.jsx';
 import Arrows from './Arrows.jsx';
 import Character from './Character.jsx';
 

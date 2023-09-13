@@ -12,6 +12,7 @@ function App() {
     <Suspense fallback={<Loading />}>
       <Routes>
         <Route path='/' element={<Landing />} />
+        <Route path='/loading/' element={<Loading />} />
 
         <Route path='*' element={<NotFound />} />
       </Routes>

@@ -30,6 +30,10 @@ fieldset {
   input:not([type='radio']),
   select {
     width: 10em;
+    cursor: pointer;
+    > {
+      cursor: pointer;
+    }
   }
   input {
     vertical-align: middle;
@@ -37,6 +41,8 @@ fieldset {
       appearance: none;
       -moz-appearance: none;
       -webkit-appearance: none;
+
+      cursor: pointer;
       background: none;
       border: 0;
       padding: 0;
@@ -44,6 +50,7 @@ fieldset {
       width: 2em;
     }
     &[type='radio'] {
+      cursor: pointer;
       font-size: inherit;
       width: 1em;
       height: 1em;
@@ -52,8 +59,7 @@ fieldset {
   }
 }
 
-:root,
-#root {
+:root {
   user-select: none;
   font-size: 16px;
   min-height: 100%;
@@ -197,6 +203,7 @@ fieldset {
     color: white;
     padding: 0 1.5em;
     background-color: #4477ee;
+    cursor: pointer;
     border: none;
     border-radius: 1rem;
   }
@@ -250,6 +257,7 @@ fieldset {
   width: 19em;
   gap: 1em;
   .bgimgs {
+    cursor: pointer;
     flex-grow: 0;
     flex-shrink: 0;
     height: 5em;
@@ -285,14 +293,21 @@ form {
   @include flex;
   width: 70vw;
 }
+
 h1 {
   display: block;
   text-align: center;
   font-size: 3em;
   margin: 1em 0 2em;
 }
-
 .nf {
+  h1 {
+    display: block;
+    text-align: center;
+    font-size: 3em;
+    margin: 1em 0 2em;
+    background-color: black;
+  }
   @include flex;
   width: 100vw;
   height: 100vh;

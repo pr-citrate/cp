@@ -54,14 +54,14 @@ function Landing() {
   // ]);
   // /?design%5Bname%5D%5Bcolor%5D=red
   return (
-    <>
+    <div className='troot'>
       <h1>이름뭐로하지</h1>
       <DesignForm
         userDesign={{ ...queryString.design }}
         characters={characters}
         setCharacters={setCharacters}
       />
-    </>
+    </div>
   );
 }
 export default Landing;

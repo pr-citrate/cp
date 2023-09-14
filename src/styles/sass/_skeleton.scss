@@ -31,7 +31,7 @@ fieldset {
   select {
     width: 10em;
     cursor: pointer;
-    > {
+    option {
       cursor: pointer;
     }
   }

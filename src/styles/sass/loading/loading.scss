@@ -1,3 +1,4 @@
+@use './../_skeleton';
 $charade: #282a37;
 
 body {
@@ -42,5 +43,19 @@ body {
   to {
     opacity: 0.3;
     transform: translate3d(0, -2em, 0);
+  }
+}
+
+.loading-container {
+  @include skeleton.flex;
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  &:has(.loading-container) {
+    width: 100%;
+    height: 100%;
+    background-color: orange;
   }
 }

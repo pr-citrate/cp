@@ -188,7 +188,9 @@ fieldset {
   > * {
     -webkit-box-shadow: 0.2rem 0.2rem 0.7rem 0.1rem rgba(0, 0, 0, 0.3);
     box-shadow: 0.2rem 0.2rem 0.7rem 0.1rem rgba(0, 0, 0, 0.3);
-    &:hover {
+    &:hover,
+    &:focus {
+      outline: none;
       -webkit-box-shadow: 0.2rem 0.2rem 0.7rem 0.1rem rgba(0, 0, 0, 0.5);
       box-shadow: 0.2rem 0.2rem 0.7rem 0.1rem rgba(0, 0, 0, 0.5);
     }

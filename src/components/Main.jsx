@@ -1,10 +1,10 @@
-import { memo, useContext, useState } from 'react';
-import c from '../constants/constants.jsx';
-import { designContext } from '../utils/DesignWrapper.jsx';
-import preventRightClick from '../utils/PreventRightClick.jsx';
-import setPosition from '../utils/SetPosition.jsx';
-import Arrows from './Arrows.jsx';
-import Character from './Character.jsx';
+import { memo, useContext, useState } from "react";
+import c from "../constants/constants.jsx";
+import { designContext } from "../utils/DesignWrapper.jsx";
+import preventRightClick from "../utils/PreventRightClick.jsx";
+import setPosition from "../utils/SetPosition.jsx";
+import Arrows from "./Arrows.jsx";
+import Character from "./Character.jsx";
 
 const MemoizedCharacter = memo(Character);
 
@@ -23,7 +23,7 @@ function Main({ characters, setCharacters }) {
       )
     );
     console.log(
-      'debug',
+      "debug",
       relations.filter((rels) =>
         rels.some((rel) => rel.left !== id && rel.right !== id)
       )
@@ -41,34 +41,34 @@ function Main({ characters, setCharacters }) {
       className={`container`}
       style={{
         background: `${
-          design?.background?.bgType === 'color'
+          design?.background?.bgType === "color"
             ? design?.background?.color
-            : design?.background?.bgType === 'webimg'
+            : design?.background?.bgType === "webimg"
             ? `center / cover url(${design?.background?.internalLink})`
-            : design?.background?.bgType === 'externalimg'
+            : design?.background?.bgType === "externalimg"
             ? `center / cover url(${design?.background?.externalLink})`
-            : 'white'
+            : "white"
         }`,
-        transform: `scale(${(window.innerWidth * 0.7) / c.imgWidth})`,
+        transform: `scale(${(window.innerWidth * 0.5) / c.imgWidth})`,
       }}
     >
       <div className={`header`} style={design?.header}>
         <h2
-          className='title'
+          className="title"
           style={{
             fontFamily: design?.title?.font,
             color: design?.title?.color,
-            fontSize: design?.title?.size + 'px',
+            fontSize: design?.title?.size + "px",
           }}
         >
           {design?.title?.text}
         </h2>
         <h3
-          className='subtitle'
+          className="subtitle"
           style={{
             fontFamily: design?.subtitle?.font,
             color: design?.subtitle?.color,
-            fontSize: design?.subtitle?.size + 'px',
+            fontSize: design?.subtitle?.size + "px",
           }}
         >
           {design?.subtitle?.text}
@@ -102,7 +102,7 @@ function Main({ characters, setCharacters }) {
         />
       </div>
       <div className={`footer`} style={design?.footer}>
-        <h6 className='dev'>@k_plks</h6>
+        <h6 className="dev">@k_plks</h6>
       </div>
     </div>
   );

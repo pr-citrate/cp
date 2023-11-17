@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import uuid from 'react-uuid';
-import { useLocation } from 'react-router-dom';
-import QueryString from 'qs';
+import React, { useState, useEffect } from "react";
+import uuid from "react-uuid";
+import { useLocation } from "react-router-dom";
+import QueryString from "qs";
 
-import setPosition from '../utils/SetPosition.jsx';
+import setPosition from "../utils/SetPosition.jsx";
 
-import './../styles/Landing.css';
+import "./../styles/Landing.css";
 
-import DesignForm from '../components/DesignForm.jsx';
+import DesignForm from "../components/DesignForm.jsx";
 
 function Landing() {
   const preventClose = (e) => {
     e.preventDefault();
-    e.returnValue = '';
+    e.returnValue = "";
   };
 
   useEffect(() => {
     (() => {
-      window.addEventListener('beforeunload', preventClose);
+      window.addEventListener("beforeunload", preventClose);
     })();
 
     return () => {
-      window.removeEventListener('beforeunload', preventClose);
+      window.removeEventListener("beforeunload", preventClose);
     };
   }, []);
 
@@ -54,8 +54,8 @@ function Landing() {
   // ]);
   // /?design%5Bname%5D%5Bcolor%5D=red
   return (
-    <div className='troot'>
-      <h1>이름뭐로하지</h1>
+    <div className="troot">
+      <h1>관계도 생성기</h1>
       <DesignForm
         userDesign={{ ...queryString.design }}
         characters={characters}

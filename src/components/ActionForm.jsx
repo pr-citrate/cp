@@ -1,20 +1,20 @@
-import { useState } from 'react';
-import uuid from 'react-uuid';
+import { useState } from "react";
+import uuid from "react-uuid";
 
-import setPosition from '../utils/SetPosition.jsx';
-import CaptureButton from './CaptureButton.jsx';
-import ShareButton from './ShareButton.jsx';
+import setPosition from "../utils/SetPosition.jsx";
+import CaptureButton from "./CaptureButton.jsx";
+import ShareButton from "./ShareButton.jsx";
 
 function ActionForm({ characters, setCharacters, updatePointsPositions }) {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   const handleAdd = () => {
-    if (inputValue.trim() !== '') {
+    if (inputValue.trim() !== "") {
       setCharacters(
         setPosition([...characters, { name: inputValue.trim(), id: uuid() }])
       );
 
-      setInputValue('');
+      setInputValue("");
     }
   };
 
@@ -23,16 +23,16 @@ function ActionForm({ characters, setCharacters, updatePointsPositions }) {
   };
 
   const handleInputKeyDown = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       handleAdd();
     }
   };
 
   return (
-    <div className='action-form'>
+    <div className="action-form">
       <div>
         <input
-          className='add-input-field'
+          className="add-input-field"
           value={inputValue}
           onChange={handleInputOnChange}
           onKeyDown={handleInputKeyDown}
@@ -41,9 +41,9 @@ function ActionForm({ characters, setCharacters, updatePointsPositions }) {
       </div>
       <CaptureButton />
       <ShareButton characters={characters} />
-      <a href='https://www.buymeacoffee.com/citrate'>
-        <img src='https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=citrate&button_colour=5F7FFF&font_colour=ffffff&font_family=Inter&outline_colour=000000&coffee_colour=FFDD00' />
-      </a>
+      {/* <a href="https://www.buymeacoffee.com/citrate">
+        <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=citrate&button_colour=5F7FFF&font_colour=ffffff&font_family=Inter&outline_colour=000000&coffee_colour=FFDD00" />
+      </a> */}
     </div>
   );
 }

@@ -8,7 +8,12 @@
   src: url("/assets/fonts/ArialBlack.woff") format("woff");
   font-display: fallback;
 }
-
+/* @font-face {
+  font-family: "Black Han Sans";
+  src: url("/assets/fonts/Black Han Sans.woff") format("woff");
+  font-display: fallback;
+}
+ */
 @font-face {
   font-family: "EBS훈민정음";
   src: url("/assets/fonts/EBS훈민정음.woff") format("woff");
@@ -16,7 +21,7 @@
 }
 
 @font-face {
-  font-family: "Kotra Bold";
+  font-family: "코트라 볼드체";
   src: url("/assets/fonts/KotraBold.woff") format("woff");
   font-display: fallback;
 }

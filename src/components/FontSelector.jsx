@@ -6,8 +6,9 @@ function FontSelector({ register }) {
   const data = [
     "Arial",
     "Arial Black",
+    "Black Han Sans",
     "EBS훈민정음",
-    "Kotra Bold",
+    // "코트라 볼드체",
     "건축조각체",
     "기후위기",
     "길벗",

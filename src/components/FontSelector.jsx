@@ -5,6 +5,7 @@ function FontSelector({ register }) {
   const [selectedFont, setSelectedFont] = useState("Arial");
   const data = [
     "Arial",
+    "ArialBlack",
     "EBS훈민정음",
     "건축조각체",
     "기후위기",

@@ -54,7 +54,7 @@ function Landing() {
   // ]);
   // /?design%5Bname%5D%5Bcolor%5D=red
   return (
-    <div className="troot">
+    <div className="root">
       <h1>관계도 생성기</h1>
       <DesignForm
         userDesign={{ ...queryString.design }}

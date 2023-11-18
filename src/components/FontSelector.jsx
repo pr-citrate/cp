@@ -1,21 +1,22 @@
-import { useState } from 'react';
-import uuid from 'react-uuid';
+import { useState } from "react";
+import uuid from "react-uuid";
 
 function FontSelector({ register }) {
-  const [selectedFont, setSelectedFont] = useState('Arial');
+  const [selectedFont, setSelectedFont] = useState("Arial");
   const data = [
-    'Arial',
-    'EBS훈민정음',
-    '건축조각체',
-    '기후위기',
-    '길벗',
-    '램체',
-    '영도바다체',
-    '인천교육자람체',
-    '태백은하수체',
-    '평창평화체',
-    '학교안심우주',
-    '한글재민체',
+    "Arial",
+    "Arial Black",
+    "EBS훈민정음",
+    "건축조각체",
+    "기후위기",
+    "길벗",
+    "램체",
+    "영도바다체",
+    "인천교육자람체",
+    "태백은하수체",
+    "평창평화체",
+    "학교안심우주",
+    "한글재민체",
   ];
   return (
     <select

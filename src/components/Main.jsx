@@ -6,8 +6,6 @@ import setPosition from "../utils/SetPosition.jsx";
 import Arrows from "./Arrows.jsx";
 import Character from "./Character.jsx";
 
-const MemoizedCharacter = memo(Character);
-
 function Main({ characters, setCharacters }) {
   const [relations, setRelations] = useState([]);
   const [selected, setSelected] = useState(null);
@@ -80,7 +78,7 @@ function Main({ characters, setCharacters }) {
         onContextMenu={preventRightClick}
       >
         {characters.map((character) => (
-          <MemoizedCharacter
+          <Character
             characters={characters}
             handleDelete={handleDelete}
             id={character.id}

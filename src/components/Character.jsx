@@ -1,7 +1,7 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from "react";
 
-import setPosition from '../utils/SetPosition.jsx';
-import { designContext } from '../utils/DesignWrapper.jsx';
+import setPosition from "../utils/SetPosition.jsx";
+import { designContext } from "../utils/DesignWrapper.jsx";
 
 function Character({
   characters,
@@ -112,7 +112,7 @@ function Character({
     setShowContext(false);
   };
   const handleNameChange = () => {
-    if (inputName.trim() !== '') {
+    if (inputName.trim() !== "") {
       setCharacters(
         setPosition(
           characters.map((obj) =>
@@ -129,7 +129,7 @@ function Character({
     setInputName(event.target.value);
   };
   const handleEnter = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       handleNameChange();
     }
   };
@@ -147,7 +147,7 @@ function Character({
         (event.button === 0 || event.button === 2) &&
         !buttonRef?.current.contains(event.target)
       ) {
-        for (const btn of document.querySelectorAll('.character')) {
+        for (const btn of document.querySelectorAll(".character")) {
           if (event.button === 0 && btn.contains(event.target)) return;
         }
         setSelected(null);
@@ -155,10 +155,10 @@ function Character({
       }
     };
 
-    document.addEventListener('mousedown', handleClickError);
+    document.addEventListener("mousedown", handleClickError);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickError);
+      document.removeEventListener("mousedown", handleClickError);
     };
   });
 
@@ -166,8 +166,8 @@ function Character({
     setShowContext(true);
     event.preventDefault();
     event.stopPropagation();
-    contextRef.current.style.top = event.clientY + 'px';
-    contextRef.current.style.left = event.clientX + 'px';
+    contextRef.current.style.top = event.clientY + "px";
+    contextRef.current.style.left = event.clientX + "px";
   };
 
   const handleDragStart = (event) => {
@@ -224,13 +224,13 @@ function Character({
         id={id}
         ref={buttonRef}
         className={`character fadein
-          ${onHighlight ? 'highlight' : ''}`}
+          ${onHighlight ? "highlight" : ""}`}
         style={{
-          top: character.yPos + 'px',
-          left: character.xPos + 'px',
+          top: character.yPos + "px",
+          left: character.xPos + "px",
           backgroundColor: design?.characters?.bgcolor,
           color: design?.characters?.color,
-          transform: selected === character.id ? 'scale(1.1)' : '',
+          transform: selected === character.id ? "scale(1.1)" : "",
         }}
         onClick={handleClick}
       >
@@ -241,6 +241,7 @@ function Character({
           onKeyDown={handleEnter}
           ref={inputRef}
           style={{
+            fontSize: design?.characters?.size + "px",
             color: design?.characters?.color,
             fontFamily: design?.characters?.font,
           }}
@@ -251,7 +252,7 @@ function Character({
         className={`context-menu-container`}
         ref={contextRef}
         style={{
-          display: showContext ? 'flex' : 'none',
+          display: showContext ? "flex" : "none",
         }}
       >
         <button
@@ -261,7 +262,7 @@ function Character({
           delete
         </button>
         <button className={`context-menu`} onClick={handleHighlight}>
-          {onHighlight ? 'cancel highlighting' : 'highlight'}
+          {onHighlight ? "cancel highlighting" : "highlight"}
         </button>
         <button className={`context-menu`} onClick={handleEdit}>
           edit

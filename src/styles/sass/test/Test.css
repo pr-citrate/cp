@@ -196,8 +196,9 @@ input:focus {
   font-display: fallback;
 }
 @font-face {
-  font-family: "코트라";
-  src: url("./../../assets/fonts/코트라.woff") format("woff");
+  font-family: "Kotra Bold";
+  src: url("./../../assets/fonts/KotraBold.woff") format("woff");
+  font-weight: bold;
   font-display: fallback;
 }
 @font-face {
@@ -327,7 +328,7 @@ fieldset input[type=radio] {
   position: absolute;
   right: 1em;
   bottom: 1em;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, "코트라", sans-serif;
   font-style: italic;
   font-size: 1.5em;
   font-weight: bolder;

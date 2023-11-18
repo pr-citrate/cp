@@ -1,7 +1,7 @@
-import React from 'react';
-import { useContext } from 'react';
-import { stringify } from 'qs';
-import { designContext } from '../utils/DesignWrapper.jsx';
+import React from "react";
+import { useContext } from "react";
+import { stringify } from "qs";
+import { designContext } from "../utils/DesignWrapper.jsx";
 
 function ShareButton({ characters }) {
   const design = useContext(designContext);
@@ -9,14 +9,20 @@ function ShareButton({ characters }) {
     console.log(text);
     console.log(design);
     await window.navigator.clipboard.writeText(text);
-    alert('link copied!');
+    alert("link copied!");
   };
 
   return (
     <button
       onClick={() =>
+        // clipboardCopy(
+        //   `localhost:5173/?${stringify({
+        //     characters: characters.map((obj) => obj.name),
+        //     design: design,
+        //   })}`
+        // )
         clipboardCopy(
-          `localhost:5173/?${stringify({
+          `cp-zeta.vercel.app/?${stringify({
             characters: characters.map((obj) => obj.name),
             design: design,
           })}`

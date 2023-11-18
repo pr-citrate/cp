@@ -5,7 +5,7 @@
 }
 @font-face {
   font-family: "Arial Black";
-  src: url("./../../assets/fonts/ArialBlack.ttf") format("ttf");
+  src: url("./../../assets/fonts/ArialBlack.woff") format("woff");
   font-display: fallback;
 }
 
@@ -52,6 +52,12 @@
 }
 
 @font-face {
+  font-family: "코트라";
+  src: url("./../../assets/fonts/코트라.woff") format("woff");
+  font-display: fallback;
+}
+
+@font-face {
   font-family: "태백은하수체";
   src: url("./../../assets/fonts/태백은하수체.woff2") format("woff2");
   font-display: fallback;
@@ -63,6 +69,11 @@
   font-display: fallback;
 }
 
+@font-face {
+  font-family: "학교안심산뜻돋움";
+  src: url("./../../assets/fonts/학교안심산뜻돋움.woff") format("woff");
+  font-display: fallback;
+}
 @font-face {
   font-family: "학교안심우주";
   src: url("./../../assets/fonts/학교안심우주.woff2") format("woff2");
